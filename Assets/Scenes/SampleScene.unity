@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 155278901}
   - component: {fileID: 155278900}
   - component: {fileID: 155278904}
+  - component: {fileID: 155278905}
   m_Layer: 0
   m_Name: mars
   m_TagString: Untagged
@@ -214,6 +215,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &155278905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155278899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +304,7 @@ GameObject:
   - component: {fileID: 279461092}
   - component: {fileID: 279461091}
   - component: {fileID: 279461095}
+  - component: {fileID: 279461096}
   m_Layer: 0
   m_Name: venus
   m_TagString: Untagged
@@ -381,6 +394,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &279461096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 279461090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &415052624
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +417,7 @@ GameObject:
   - component: {fileID: 415052626}
   - component: {fileID: 415052625}
   - component: {fileID: 415052629}
+  - component: {fileID: 415052630}
   m_Layer: 0
   m_Name: uranus
   m_TagString: Untagged
@@ -482,6 +507,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &415052630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 415052624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +590,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 55.74, y: 2.16, z: 23}
+  m_LocalPosition: {x: 44, y: 2.16, z: 23}
   m_LocalScale: {x: 0.67491, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -583,6 +619,7 @@ GameObject:
   - component: {fileID: 754364630}
   - component: {fileID: 754364629}
   - component: {fileID: 754364633}
+  - component: {fileID: 754364634}
   m_Layer: 0
   m_Name: saturn
   m_TagString: Untagged
@@ -672,6 +709,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &754364634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 754364628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1043376300
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +830,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043376300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cccdaa008542d4c961c69584632617, type: 3}
+  m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1458933477
@@ -797,6 +845,7 @@ GameObject:
   - component: {fileID: 1458933479}
   - component: {fileID: 1458933478}
   - component: {fileID: 1458933482}
+  - component: {fileID: 1458933483}
   m_Layer: 0
   m_Name: jupiter
   m_TagString: Untagged
@@ -886,6 +935,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1458933483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458933477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1644078142
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,6 +959,7 @@ GameObject:
   - component: {fileID: 1644078143}
   - component: {fileID: 1644078148}
   - component: {fileID: 1644078147}
+  - component: {fileID: 1644078149}
   m_Layer: 0
   m_Name: earth
   m_TagString: Untagged
@@ -1000,6 +1061,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1644078149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1644078142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1905837193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1084,7 @@ GameObject:
   - component: {fileID: 1905837195}
   - component: {fileID: 1905837194}
   - component: {fileID: 1905837198}
+  - component: {fileID: 1905837199}
   m_Layer: 0
   m_Name: neptune
   m_TagString: Untagged
@@ -1101,6 +1174,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1905837199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1905837193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1941531480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,6 +1197,7 @@ GameObject:
   - component: {fileID: 1941531482}
   - component: {fileID: 1941531481}
   - component: {fileID: 1941531485}
+  - component: {fileID: 1941531486}
   m_Layer: 0
   m_Name: merkur
   m_TagString: Untagged
@@ -1202,3 +1287,14 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1941531486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1941531480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
