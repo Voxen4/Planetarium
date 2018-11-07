@@ -1,0 +1,57 @@
+Gravitationskraft Fg = G*((m1*m2)/r²)
+G = Graviationskonstante 6,664 *10^-11
+m1 = Masse Planet 1
+m2 = Masse Planet 2
+r = Entfernung zwischen den Mittelpunkten beider Planeten
+
+Zentrifugalkraft Fzf = m*(v²/r)
+m = Masse Planet 1
+v = Orbitalgeshwindigkeit
+r = Radius der Kreisbahn
+
+Gesamtkraft Fgesamt = Fg - Fzf
+
+Sonnensystem
+
+Sonne 
+Masse 1,989 * 10^30 kg
+
+Merkur
+Masse 3,301 · 10^23 kg
+Entfernung zur Sonne 57.910.000 km
+Bahngeschwindigkeit 47,36 km/s
+
+Venus
+Masse 4,869 · 10^24 kg
+Entfernung zur Sonne 108.200.000 km
+Bahngeschwindigkeit 35,02 km/s
+
+Erde
+Masse 5,972 × 10^24 kg
+Entfernung zur Sonne 149.600.000 km = 1AE
+Bahngeschwindigkeit 29,78 km/s
+
+Mars
+Masse 6,419 · 10^23 kg
+Entfernung zur Sonne 227.900.000 km
+Bahngeschwindigkeit 24,13 km/s
+
+Jupiter
+Masse 1,898 × 10^27 kg
+Entfernung zur Sonne 778.500.000 km
+Bahngeschwindigkeit 13,07 km/s
+
+Saturn
+Masse 5,683 × 10^26 kg
+Entfernung zur Sonne 1,434 × 10^9 km
+Bahngeschwindigkeit 9,69 km/s
+
+Uranus
+Masse 8,683 · 1025 kg
+Entfernung zur Sonne 2,871 × 10^9 km
+Bahngeschwindigkeit 6,81 km/s
+
+Neptun
+Masse 1,0243 · 10^26 kg
+Entfernung zur Sonne 4,495 × 10^9 km
+Bahngeschwindigkeit 5,43 km/s
