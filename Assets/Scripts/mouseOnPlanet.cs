@@ -35,6 +35,12 @@ public class mouseOnPlanet : MonoBehaviour
         currentToolTipText = text;
     }
 
+    private void OnMouseDown()
+    {
+        //Center Cam on Planet TODO Follow ?
+        //Camera.main.transform.position = this.gameObject.transform.position;
+    }
+
     void OnMouseExit()
     {
         currentToolTipText = "";
