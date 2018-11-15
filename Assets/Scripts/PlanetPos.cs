@@ -12,8 +12,8 @@ public class PlanetPos : MonoBehaviour {
         string[] lines = textAsset.text.Split('\n');
         for(int i = 1; i < lines.Length - 1; i++)
         {
-            string line = lines[i];
-            string[] columns = line.Split('\t');
+            string line = lines[i].Trim(new char[]{'\t',' '});
+            string[] columns = line.Split('\t');             
             Parsed p = new Parsed
             {
                 year = short.Parse(columns[0]),
@@ -26,6 +26,7 @@ public class PlanetPos : MonoBehaviour {
                 HGI_LON = double.Parse(columns[7])
             };
             parsedPositions.Add(p);
+            
         }
     }
 	// Use this for initialization
