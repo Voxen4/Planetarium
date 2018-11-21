@@ -25,5 +25,6 @@ To-Do:
 - Rotation der Planenten mit den Listen
 - Kalender für die einzelnen Tage aus den Listen
 - Umlaufbahn programmieren
-- TBC
-
+- Gravitation/Anziehskraft programmieren
+- Ticks auf die Jahre anpassen
+- TBC...
