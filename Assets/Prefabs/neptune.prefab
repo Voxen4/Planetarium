@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54166898352462472}
   - component: {fileID: 114772909746755268}
   - component: {fileID: 114713234253322600}
+  - component: {fileID: 114484490594601526}
   m_Layer: 0
   m_Name: neptune
   m_TagString: Untagged
@@ -102,6 +103,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114484490594601526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327631676129946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd1fe72491eca6a41a9ba0a17c3c38c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114713234253322600
 MonoBehaviour:
   m_ObjectHideFlags: 1

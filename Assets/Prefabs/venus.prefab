@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54104251122038850}
   - component: {fileID: 114584115728054026}
   - component: {fileID: 114661780723466648}
+  - component: {fileID: 114846246465238128}
   m_Layer: 0
   m_Name: venus
   m_TagString: Untagged
@@ -122,6 +123,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d675cc949c434f5459a7d826d3ca798b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114846246465238128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1682093154820564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd1fe72491eca6a41a9ba0a17c3c38c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &135304125674306118
