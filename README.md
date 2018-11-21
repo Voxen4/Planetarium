@@ -16,3 +16,14 @@ https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html
 
 https://www.projectpluto.com/source.htm
 
+
+
+
+To-Do:
+
+- Umwandlung der Koordinanten in X und Y
+- Rotation der Planenten mit den Listen
+- Kalender für die einzelnen Tage aus den Listen
+- Umlaufbahn programmieren
+- TBC
+
