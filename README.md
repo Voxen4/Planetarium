@@ -11,6 +11,7 @@ https://nssdc.gsfc.nasa.gov/planetary/factsheet/
 Abstände
 https://www.timeanddate.com/astronomy/planets/distance
 https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html
+
 Perihel/Apihel:
 https://de.wikipedia.org/wiki/Apsis_(Astronomie)
 
