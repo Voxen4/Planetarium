@@ -11,6 +11,8 @@ public class mouseOnPlanet : MonoBehaviour
     private GUIStyle frontStyle;
     private GUIStyle backStyle;
     private Font myFont;
+
+    PlanetData pd;
     
     void Start()
     {
@@ -28,11 +30,13 @@ public class mouseOnPlanet : MonoBehaviour
         backStyle.normal.textColor = Color.blue;
         backStyle.alignment = TextAnchor.UpperCenter;
         backStyle.wordWrap = true;
+
+        pd = gameObject.GetComponent<PlanetData>();
     }
 
     void OnMouseEnter()
     {
-        currentToolTipText = text;
+        currentToolTipText = text + "\nMaxDistance: " + pd.getMaxDistance().ToString("F2") + "\nMinDistance: " + pd.getMinDistance().ToString("F2");
     }
 
     private void OnMouseDown()
