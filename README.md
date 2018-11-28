@@ -1,3 +1,7 @@
+Projekt der TU Graz (für Kräfte etc)
+https://itp.tugraz.at/wiki/index.php/Simulation_unseres_Sonnensystems
+
+
 Super Übersicht:
 https://solarsystem.nasa.gov
 
