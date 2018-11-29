@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlanetPos : MonoBehaviour {
-    private readonly int planet;
-    private List<Parsed> parsedPositions = new List<Parsed>();
+    public readonly int planet;
+    private Dictionary<Date,Parsed> parsedPositions = new Dictionary<Date,Parsed>();
 
     public PlanetPos(int planet,TextAsset textAsset)
     {
@@ -14,18 +14,16 @@ public class PlanetPos : MonoBehaviour {
         {
             string line = lines[i].Trim(new char[]{'\t',' '});
             string[] columns = line.Split('\t');             
-            Parsed p = new Parsed
-            {
-                year = short.Parse(columns[0]),
-                day = short.Parse(columns[1]),
-                AU = double.Parse(columns[2]),
-                ELAT = double.Parse(columns[3]),
-                ELON = double.Parse(columns[4]),
-                HG_LAT = double.Parse(columns[5]),
-                HG_LON = double.Parse(columns[6]),
-                HGI_LON = double.Parse(columns[7])
-            };
-            parsedPositions.Add(p);
+            Parsed p = new Parsed();
+            p.date._year = short.Parse(columns[0]);
+            p.date._day = short.Parse(columns[1]);
+            p.AU = double.Parse(columns[2]);
+            p.ELAT = double.Parse(columns[3]);
+            p.ELON = double.Parse(columns[4]);
+            p.HG_LAT = double.Parse(columns[5]);
+            p.HG_LON = double.Parse(columns[6]);
+            p.HGI_LON = double.Parse(columns[7]);
+            parsedPositions.Add(p.date,p);
             
         }
     }
@@ -39,9 +37,12 @@ public class PlanetPos : MonoBehaviour {
 		
 	}
 
-    class Parsed
+    public class Date{    
+        public short _year,_day;
+     }
+    public class Parsed
     {
-        public short year,day;
+        public Date date;
         public double AU, ELAT, ELON, HG_LAT, HG_LON, HGI_LON;
     }
 
@@ -50,5 +51,18 @@ public class PlanetPos : MonoBehaviour {
         return this.planet;
     }
 
+    public Parsed GetParsed(Date date)
+    {
+        Parsed parsedValue;
+        if (parsedPositions.ContainsKey(date))
+        {
+            parsedPositions.TryGetValue(date,out parsedValue);
+            return parsedValue;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
 }

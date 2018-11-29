@@ -22,6 +22,17 @@ public class StartUp : MonoBehaviour {
 	static void Update () {
 		
 	}
+
+    public static PlanetPos getInitPosition(Planet planet)
+    {
+      foreach (var pos in initalPositions) {
+        if((Planet)System.Enum.ToObject(typeof(Planet),pos.planet) == planet)
+            {
+                return pos;
+            }
+        }
+      return null;
+    }
 }
 
 public enum Planet
