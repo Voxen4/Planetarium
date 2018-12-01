@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54166898352462472}
   - component: {fileID: 114772909746755268}
   - component: {fileID: 114713234253322600}
-  - component: {fileID: 114484490594601526}
+  - component: {fileID: 114825255688359346}
   m_Layer: 0
   m_Name: neptune
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1327631676129946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 39.4}
+  m_LocalPosition: {x: 309.01727, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,17 +103,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114484490594601526
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1327631676129946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd1fe72491eca6a41a9ba0a17c3c38c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114713234253322600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,6 +125,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114825255688359346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327631676129946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ad33f618d38c24f8dfba2de7b4cad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 17.151708
+  diameter: 48.682
+  apohelHeight: 453.7
+  apohelSpeed: 0.43
+  sphereOfInfluence: {fileID: 0}
 --- !u!135 &135181583322151624
 SphereCollider:
   m_ObjectHideFlags: 1

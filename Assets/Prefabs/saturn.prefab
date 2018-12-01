@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54623717653152930}
   - component: {fileID: 114356020141431978}
   - component: {fileID: 114713878559215962}
-  - component: {fileID: 114450550631852028}
+  - component: {fileID: 114976400805478810}
   m_Layer: 0
   m_Name: saturn
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666742095994604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 33.3}
+  m_LocalPosition: {x: 150.35, y: 0, z: 0}
   m_LocalScale: {x: 2.6, y: 2.6, z: 2.6}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,7 +95,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666742095994604}
   serializedVersion: 2
-  m_Mass: 568.46
+  m_Mass: 95.19424
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -114,17 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114450550631852028
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1666742095994604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd1fe72491eca6a41a9ba0a17c3c38c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114713878559215962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,6 +125,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d675cc949c434f5459a7d826d3ca798b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114976400805478810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666742095994604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ad33f618d38c24f8dfba2de7b4cad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 95.1942398
+  diameter: 217456
+  apohelHeight: 150.35
+  apohelSpeed: 0.69
+  sphereOfInfluence: {fileID: 0}
 --- !u!135 &135938278890510164
 SphereCollider:
   m_ObjectHideFlags: 1

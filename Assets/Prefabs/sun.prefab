@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54265522669033832}
   - component: {fileID: 114610428264097072}
   - component: {fileID: 114060350513868644}
+  - component: {fileID: 114803738054129170}
   m_Layer: 0
   m_Name: sun
   m_TagString: Untagged
@@ -40,7 +41,7 @@ Transform:
   m_GameObject: {fileID: 1654815640645674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 30}
+  m_LocalScale: {x: 10.8, y: 10.8, z: 10.8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,7 +95,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654815640645674}
   serializedVersion: 2
-  m_Mass: 1989100
+  m_Mass: 333054.25
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -124,6 +125,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114803738054129170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654815640645674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ad33f618d38c24f8dfba2de7b4cad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 333054.253
+  diameter: 10.8
+  apohelHeight: 0
+  apohelSpeed: 0
+  sphereOfInfluence: {fileID: 0}
 --- !u!135 &135200652972315570
 SphereCollider:
   m_ObjectHideFlags: 1
