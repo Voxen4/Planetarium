@@ -11,7 +11,7 @@ public class AttractionManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		foreach(Attractor attractor in attractors)
         {
             foreach(Attractor toAttract in attractors)

@@ -36,7 +36,7 @@ public class mouseOnPlanet : MonoBehaviour
 
     void OnMouseEnter()
     {
-        currentToolTipText = text + "\nMaxDistance: " + pd.getMaxDistance().ToString("F2") + "\nMinDistance: " + pd.getMinDistance().ToString("F2");
+        currentToolTipText = text;
     }
 
     private void OnMouseDown()

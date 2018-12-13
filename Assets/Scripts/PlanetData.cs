@@ -3,48 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlanetData : MonoBehaviour {
-    //Die Masse des Planeten in Erdenmassen. (Das reale >Gewicht in kg muss durch die Masse der Erde geteilt werden)
-    public double mass;             
-    //Der Durchmesser des Planeten. Sind bis jetzt nur platzhalter.
+    static float masseUmrechnung = (float)  5.9722f * Mathf.Pow(10,24); //in kg, Masse Erde
+    static float distanceUmrechnung = 1000000000;    //in km, Entfernung Erde,Sonne
+    static float gravitationskonstante =6.67408f * Mathf.Pow(10, -11);
+    static float vUmrechnung = Mathf.Sqrt(996461570) / 50;
+    //Alle Public Attribute sind angaben die vom Benutzer eingegeben werden müssen.
+    //Das System in dem sich der Planet befindet.
+    //Ist wichtig um die initale Geschwindigkeit des Planeten zu berrechnen.
+    public PlanetData bezugssystem;
+    //Die Masse des Planeten in kg;
+    public float mass;             
+    //Der Durchmesser des Planeten.
     public float diameter;        
-    //Höhe des höchsten Punkts des Orbits in 10 Mio km. (147.000.000 -> 14,7)
-    public double apohelHeight;     
-    //Geschwidigkeit des Planeten. BIs jetzt nur Platzhalter (29290m -> 2,9m)
-    public double apohelSpeed;      //Geschwindigkeit an Apoapsis in km/s#
-    //Der Planet um der das Objekt kreist. Im Sonnensystem ist das die Sonne (solange der Planet kein Mond ist)
-    public GameObject sphereOfInfluence;
-    //Maximale und Minimale Distanz die der Planet auf seinem Orbit um den Stern erreicht hat. Wird im Mouse-Over angezeigt.
-    private float maxDistance;
-    private float minDistance;
+    //LargeSemiAxis (in AE)
+    public float semiMajorAxis;     
+    //Excetricity
+    public float excentricity;
+
+    //Private Attribute sind umgerechnete public Attribute. Mit diese wird später gerechnet
+    private float aphelHeightSim;
+    private float semiMajorAxisSim;
+    private float massSim;
+
+
+    public void Awake()
+    {
+        aphelHeightSim = semiMajorAxis * (1 + excentricity) * (149597870700 / distanceUmrechnung);
+        semiMajorAxisSim = semiMajorAxis * (149597870700 / distanceUmrechnung);
+        massSim = mass / masseUmrechnung;
+    }
 
     public void Start()
     {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-        rb.velocity = new Vector3(0, 0, (float) apohelSpeed);
-
-        maxDistance = float.MinValue;
-        minDistance = float.MaxValue;
-    }
-
-    public void Update()
-    {
-        if (sphereOfInfluence != null)
+        this.transform.position = new Vector3(aphelHeightSim, this.transform.position.y,this.transform.position.z);
+        rb.mass = massSim;
+        float apohelSpeed = Mathf.Sqrt(bezugssystem.getMassSim() * ((2 / aphelHeightSim) - (1 / semiMajorAxisSim)));
+        //Wegen error im Debug.Log
+        if(!float.IsNaN(apohelSpeed))
         {
-            float distance = Vector3.Magnitude(gameObject.transform.position - sphereOfInfluence.transform.position);
-            if (distance < minDistance)
-                minDistance = distance;
-            else if (distance > maxDistance)
-                maxDistance = distance;
+            rb.velocity = new Vector3(0, 0, apohelSpeed);
         }
     }
 
-    public float getMinDistance()
+    public float getMassSim()
     {
-        return minDistance;
-    }
-
-    public float getMaxDistance()
-    {
-        return maxDistance;
+        return massSim;
     }
 }
