@@ -18,6 +18,8 @@ https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html
 
 Perihel/Apihel:
 https://de.wikipedia.org/wiki/Apsis_(Astronomie)
+FactSheet für Planeten:
+https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html
 
 
 
