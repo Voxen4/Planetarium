@@ -8,8 +8,10 @@ public class RelativeAttributesTo : MonoBehaviour {
     public Vector3 relativePos;
     public Vector3 relativeVel;
 
-    public float maxDistance;
-    public float minDistance;
+    public float apoapsisHeight;
+    public float periapsisHeight;
+
+    public float currentDistance;
 
     public float startTheta; //geographische Breite, Horizontale /Planebene
     public float startPhi; //geographische Länge, Vertikale / Höhe
@@ -34,11 +36,11 @@ public class RelativeAttributesTo : MonoBehaviour {
         startTheta = Mathf.Asin(relativePos.y / relativePos.magnitude);
         startPhi = Mathf.Atan2(relativePos.z, relativePos.x);
 
-        maxDistance = relativePos.magnitude;
+        apoapsisHeight = relativePos.magnitude;
         maxDistanceAngleTheta = startTheta;
         maxDistanceAnglePhi = startPhi;
 
-        minDistance = relativePos.magnitude;
+        periapsisHeight = relativePos.magnitude;
         minDistanceAngleTheta = startTheta;
         minDistanceAngleTheta = startPhi;
 
@@ -52,18 +54,20 @@ public class RelativeAttributesTo : MonoBehaviour {
         relativePos = relativeTo.gameObject.transform.position - this.transform.position;
         relativeVel = relativeTo.GetComponent<Rigidbody>().velocity - this.GetComponent<Rigidbody>().velocity;
 
+        currentDistance = relativePos.magnitude;
+
         currentTheta = Mathf.Asin(relativePos.y / relativePos.magnitude);
         currentPhi = Mathf.Atan2(relativePos.z, relativePos.x);
 
-        if (relativePos.magnitude > maxDistance)
+        if (relativePos.magnitude > apoapsisHeight)
         {
-            maxDistance = relativePos.magnitude;
+            apoapsisHeight = relativePos.magnitude;
             maxDistanceAngleTheta = currentTheta;
             maxDistanceAnglePhi = currentPhi;
         }
-        else if (relativePos.magnitude < minDistance)
+        else if (relativePos.magnitude < periapsisHeight)
         {
-            minDistance = relativePos.magnitude;
+            periapsisHeight = relativePos.magnitude;
             minDistanceAngleTheta = currentTheta;
             minDistanceAnglePhi = currentPhi;
         }

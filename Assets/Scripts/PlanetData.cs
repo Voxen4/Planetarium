@@ -19,6 +19,8 @@ public class PlanetData : MonoBehaviour {
     public float semiMajorAxis;     
     //Excetricity
     public float excentricity;
+    //Inclination in Grad
+    public float inclination;
 
     //Private Attribute sind umgerechnete public Attribute. Mit diese wird später gerechnet
     private float aphelHeightSim;
@@ -31,12 +33,13 @@ public class PlanetData : MonoBehaviour {
         aphelHeightSim = semiMajorAxis * (1 + excentricity) * (149597870700 / distanceUmrechnung);
         semiMajorAxisSim = semiMajorAxis * (149597870700 / distanceUmrechnung);
         massSim = mass / masseUmrechnung;
+        this.transform.position = new Vector3(Mathf.Cos(inclination / 180f * Mathf.PI) * aphelHeightSim, Mathf.Sin(inclination / 180f * Mathf.PI) * aphelHeightSim, this.transform.position.z);
     }
 
     public void Start()
     {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-        this.transform.position = new Vector3(aphelHeightSim, this.transform.position.y,this.transform.position.z);
+        //this.transform.position = new Vector3(Mathf.Cos(inclination/180f*Mathf.PI) * aphelHeightSim, Mathf.Sin(inclination / 180f * Mathf.PI) * aphelHeightSim, this.transform.position.z); 
         rb.mass = massSim;
         float apohelSpeed = Mathf.Sqrt(bezugssystem.getMassSim() * ((2 / aphelHeightSim) - (1 / semiMajorAxisSim)));
         //Wegen error im Debug.Log
