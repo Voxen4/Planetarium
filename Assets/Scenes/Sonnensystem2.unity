@@ -272,7 +272,7 @@ Prefab:
     - target: {fileID: 114859465820861590, guid: eeff3417afd28d347996781268cd6cfd,
         type: 2}
       propertyPath: semiMajorAxis
-      value: 0.38709927
+      value: 0.38709894
       objectReference: {fileID: 0}
     - target: {fileID: 114859465820861590, guid: eeff3417afd28d347996781268cd6cfd,
         type: 2}
@@ -287,7 +287,7 @@ Prefab:
     - target: {fileID: 114859465820861590, guid: eeff3417afd28d347996781268cd6cfd,
         type: 2}
       propertyPath: excentricity
-      value: 0.20563594
+      value: 0.20563069
       objectReference: {fileID: 0}
     - target: {fileID: 114859465820861590, guid: eeff3417afd28d347996781268cd6cfd,
         type: 2}
@@ -315,6 +315,16 @@ Prefab:
         type: 2}
       propertyPath: inclination
       value: 7.00487
+      objectReference: {fileID: 0}
+    - target: {fileID: 114859465820861590, guid: eeff3417afd28d347996781268cd6cfd,
+        type: 2}
+      propertyPath: longitudeOfAscendingNode
+      value: 48.33167
+      objectReference: {fileID: 0}
+    - target: {fileID: 114859465820861590, guid: eeff3417afd28d347996781268cd6cfd,
+        type: 2}
+      propertyPath: longitudeOfPeriapsis
+      value: 77.45645
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eeff3417afd28d347996781268cd6cfd, type: 2}
@@ -651,12 +661,12 @@ Prefab:
     - target: {fileID: 114854841136815466, guid: 88d526ba161c6e045817ee29d33fe55c,
         type: 2}
       propertyPath: semiMajorAxis
-      value: 5.203
+      value: 5.203363
       objectReference: {fileID: 0}
     - target: {fileID: 114854841136815466, guid: 88d526ba161c6e045817ee29d33fe55c,
         type: 2}
       propertyPath: excentricity
-      value: 0.0484
+      value: 0.04839266
       objectReference: {fileID: 0}
     - target: {fileID: 114854841136815466, guid: 88d526ba161c6e045817ee29d33fe55c,
         type: 2}
@@ -681,7 +691,17 @@ Prefab:
     - target: {fileID: 114854841136815466, guid: 88d526ba161c6e045817ee29d33fe55c,
         type: 2}
       propertyPath: inclination
-      value: 1.305
+      value: 1.3053
+      objectReference: {fileID: 0}
+    - target: {fileID: 114854841136815466, guid: 88d526ba161c6e045817ee29d33fe55c,
+        type: 2}
+      propertyPath: longitudeOfAscendingNode
+      value: 100.55615
+      objectReference: {fileID: 0}
+    - target: {fileID: 114854841136815466, guid: 88d526ba161c6e045817ee29d33fe55c,
+        type: 2}
+      propertyPath: longitudeOfPeriapsis
+      value: 14.75385
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88d526ba161c6e045817ee29d33fe55c, type: 2}
@@ -1674,11 +1694,11 @@ MonoBehaviour:
   bezugssystem: {fileID: 469290833}
   mass: 6.419e+23
   diameter: 0.75
-  semiMajorAxis: 1.524
-  excentricity: 0.0935
-  inclination: 1.85
-  longitudeOfAscendingNode: 0
-  argumentOfPeriapsis: 0
+  semiMajorAxis: 1.5236623
+  excentricity: 0.09341233
+  inclination: 1.85061
+  longitudeOfAscendingNode: 49.57854
+  longitudeOfPeriapsis: 336.04083
 --- !u!114 &669436781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2288,12 +2308,12 @@ Prefab:
     - target: {fileID: 114942659089592846, guid: b84110b7036f5054cb1378c14675acf6,
         type: 2}
       propertyPath: semiMajorAxis
-      value: 19.201
+      value: 19.191263
       objectReference: {fileID: 0}
     - target: {fileID: 114942659089592846, guid: b84110b7036f5054cb1378c14675acf6,
         type: 2}
       propertyPath: excentricity
-      value: 0.0472
+      value: 0.04716771
       objectReference: {fileID: 0}
     - target: {fileID: 114942659089592846, guid: b84110b7036f5054cb1378c14675acf6,
         type: 2}
@@ -2303,7 +2323,7 @@ Prefab:
     - target: {fileID: 114942659089592846, guid: b84110b7036f5054cb1378c14675acf6,
         type: 2}
       propertyPath: mass
-      value: 8.683e+25
+      value: 8.6813e+25
       objectReference: {fileID: 0}
     - target: {fileID: 114942659089592846, guid: b84110b7036f5054cb1378c14675acf6,
         type: 2}
@@ -2318,7 +2338,17 @@ Prefab:
     - target: {fileID: 114942659089592846, guid: b84110b7036f5054cb1378c14675acf6,
         type: 2}
       propertyPath: inclination
-      value: 0.77
+      value: 0.76986
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942659089592846, guid: b84110b7036f5054cb1378c14675acf6,
+        type: 2}
+      propertyPath: longitudeOfAscendingNode
+      value: 74.22988
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942659089592846, guid: b84110b7036f5054cb1378c14675acf6,
+        type: 2}
+      propertyPath: longitudeOfPeriapsis
+      value: 170.96423
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b84110b7036f5054cb1378c14675acf6, type: 2}
@@ -3557,12 +3587,12 @@ Prefab:
     - target: {fileID: 114825255688359346, guid: 2c17eeba75f8f504391ac723bd96eda7,
         type: 2}
       propertyPath: semiMajorAxis
-      value: 30.07
+      value: 30.068964
       objectReference: {fileID: 0}
     - target: {fileID: 114825255688359346, guid: 2c17eeba75f8f504391ac723bd96eda7,
         type: 2}
       propertyPath: excentricity
-      value: 0.00859
+      value: 0.00858587
       objectReference: {fileID: 0}
     - target: {fileID: 54166898352462472, guid: 2c17eeba75f8f504391ac723bd96eda7,
         type: 2}
@@ -3572,7 +3602,17 @@ Prefab:
     - target: {fileID: 114825255688359346, guid: 2c17eeba75f8f504391ac723bd96eda7,
         type: 2}
       propertyPath: inclination
-      value: 1.769
+      value: 1.76917
+      objectReference: {fileID: 0}
+    - target: {fileID: 114825255688359346, guid: 2c17eeba75f8f504391ac723bd96eda7,
+        type: 2}
+      propertyPath: longitudeOfAscendingNode
+      value: 131.7217
+      objectReference: {fileID: 0}
+    - target: {fileID: 114825255688359346, guid: 2c17eeba75f8f504391ac723bd96eda7,
+        type: 2}
+      propertyPath: longitudeOfPeriapsis
+      value: 44.97135
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c17eeba75f8f504391ac723bd96eda7, type: 2}
@@ -3960,27 +4000,32 @@ Prefab:
     - target: {fileID: 114629906109394140, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
         type: 2}
       propertyPath: excentricity
-      value: 0.0167
+      value: 0.01671022
       objectReference: {fileID: 0}
     - target: {fileID: 114629906109394140, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
         type: 2}
       propertyPath: semiMajorAxis
-      value: 1
+      value: 1.0000001
       objectReference: {fileID: 0}
     - target: {fileID: 114629906109394140, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
         type: 2}
       propertyPath: longitudeOfAscendingNode
-      value: 0
+      value: -11.26064
       objectReference: {fileID: 0}
     - target: {fileID: 114629906109394140, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
         type: 2}
       propertyPath: argumentOfPeriapsis
-      value: 45
+      value: 102.94719
       objectReference: {fileID: 0}
     - target: {fileID: 114629906109394140, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
         type: 2}
       propertyPath: inclination
-      value: 10
+      value: 0.00005
+      objectReference: {fileID: 0}
+    - target: {fileID: 114629906109394140, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
+        type: 2}
+      propertyPath: longitudeOfPeriapsis
+      value: 102.94719
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6, type: 2}
@@ -4000,7 +4045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1793233868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4284,13 +4329,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bezugssystem: {fileID: 469290833}
-  mass: 4.869e+24
+  mass: 4.8675e+24
   diameter: 1
-  semiMajorAxis: 0.723
+  semiMajorAxis: 0.7233199
   excentricity: 0.00677323
-  inclination: 3.395
-  longitudeOfAscendingNode: 0
-  argumentOfPeriapsis: 0
+  inclination: 3.39471
+  longitudeOfAscendingNode: 76.68069
+  longitudeOfPeriapsis: 131.53297
 --- !u!114 &1923821557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4541,7 +4586,7 @@ Prefab:
     - target: {fileID: 114976400805478810, guid: f59c22ab7cb76f249a62dd11c7cd4a38,
         type: 2}
       propertyPath: mass
-      value: 5.685e+26
+      value: 5.6834e+26
       objectReference: {fileID: 0}
     - target: {fileID: 114976400805478810, guid: f59c22ab7cb76f249a62dd11c7cd4a38,
         type: 2}
@@ -4551,12 +4596,12 @@ Prefab:
     - target: {fileID: 114976400805478810, guid: f59c22ab7cb76f249a62dd11c7cd4a38,
         type: 2}
       propertyPath: semiMajorAxis
-      value: 9.5826
+      value: 9.53909
       objectReference: {fileID: 0}
     - target: {fileID: 114976400805478810, guid: f59c22ab7cb76f249a62dd11c7cd4a38,
         type: 2}
       propertyPath: excentricity
-      value: 0.05648
+      value: 0.0541506
       objectReference: {fileID: 0}
     - target: {fileID: 54623717653152930, guid: f59c22ab7cb76f249a62dd11c7cd4a38,
         type: 2}
@@ -4566,7 +4611,17 @@ Prefab:
     - target: {fileID: 114976400805478810, guid: f59c22ab7cb76f249a62dd11c7cd4a38,
         type: 2}
       propertyPath: inclination
-      value: 2.484
+      value: 2.48446
+      objectReference: {fileID: 0}
+    - target: {fileID: 114976400805478810, guid: f59c22ab7cb76f249a62dd11c7cd4a38,
+        type: 2}
+      propertyPath: longitudeOfAscendingNode
+      value: 113.71504
+      objectReference: {fileID: 0}
+    - target: {fileID: 114976400805478810, guid: f59c22ab7cb76f249a62dd11c7cd4a38,
+        type: 2}
+      propertyPath: longitudeOfPeriapsis
+      value: 92.43194
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f59c22ab7cb76f249a62dd11c7cd4a38, type: 2}
