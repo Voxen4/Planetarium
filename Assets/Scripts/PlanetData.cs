@@ -69,7 +69,14 @@ public class PlanetData : MonoBehaviour {
         //Wegen error im Debug.Log
         if (!float.IsNaN(periapsisSpeed))
         {
-            rb.velocity = new Vector3(-periapsis.z / periapsis.x, 0, 1).normalized * periapsisSpeed;
+            //rb.velocity = new Vector3(-periapsis.z / periapsis.x, 0, 1).normalized * periapsisSpeed;
+            if (this.transform.position.x < 0)
+            {
+                rb.velocity = new Vector3(-periapsis.z / periapsis.x, 0, 1).normalized * periapsisSpeed;
+            } else
+            {
+                rb.velocity = new Vector3(periapsis.z / periapsis.x, 0, -1).normalized * periapsisSpeed;
+            }
         }
     }
 
