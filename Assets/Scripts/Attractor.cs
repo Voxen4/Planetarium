@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Attractor : MonoBehaviour {
-    static double GRAVITATIONAL_CONSTANT = 1;
 
     public void Attract(Attractor toAttract)
     {
@@ -15,7 +14,7 @@ public class Attractor : MonoBehaviour {
         Vector3 direction = this.transform.position - toAttract.transform.position;
         float distance = direction.magnitude;
 
-        float forceMagnitude = (float) (GRAVITATIONAL_CONSTANT * ((toAttractPD.getMassSim() * attractorPD.getMassSim()) / (distance * distance)));
+        float forceMagnitude = (float) (AttractionManager.SPEED * ((toAttractPD.getMassSim() * attractorPD.getMassSim()) / (distance * distance)));
         Vector3 force = direction.normalized * forceMagnitude;
         toAttractRB.AddForce(force);
     }

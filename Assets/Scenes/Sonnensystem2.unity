@@ -657,6 +657,8 @@ MonoBehaviour:
   semiMajorAxis: 1.524
   excentricity: 0.0935
   inclination: 1.85
+  longitudeOfAscendingNode: 0
+  argumentOfPeriapsis: 0
 --- !u!114 &669436781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1087,6 +1089,21 @@ Prefab:
       propertyPath: semiMajorAxis
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114629906109394140, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
+        type: 2}
+      propertyPath: longitudeOfAscendingNode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114629906109394140, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
+        type: 2}
+      propertyPath: argumentOfPeriapsis
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114629906109394140, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
+        type: 2}
+      propertyPath: inclination
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6, type: 2}
   m_IsPrefabAsset: 0
@@ -1190,6 +1207,8 @@ MonoBehaviour:
   semiMajorAxis: 0.723
   excentricity: 0.00677323
   inclination: 3.395
+  longitudeOfAscendingNode: 0
+  argumentOfPeriapsis: 0
 --- !u!114 &1923821557
 MonoBehaviour:
   m_ObjectHideFlags: 0

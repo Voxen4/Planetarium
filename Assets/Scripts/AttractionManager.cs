@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttractionManager : MonoBehaviour {
+    public static float SPEED = 1;
 
     public Attractor[] attractors;
 	// Use this for initialization

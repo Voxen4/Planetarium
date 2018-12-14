@@ -21,31 +21,52 @@ public class PlanetData : MonoBehaviour {
     public float excentricity;
     //Inclination in Grad
     public float inclination;
+    //Longitude Of Ascending Node in deg (mit Uhrzeigersinn), Winkel zwischen Ascending Node des Orbits und einer festen Referenzrichtung entlang der Referenzebene.
+    public float longitudeOfAscendingNode;
+    //Argument of Periapsis in deg (mit Uhrzeigersinn): Winkel zwischen Ascending Node und Periapsis des Orbits entlang der Bahnebene.
+    public float argumentOfPeriapsis;
 
     //Private Attribute sind umgerechnete public Attribute. Mit diese wird später gerechnet
     private float aphelHeightSim;
     private float semiMajorAxisSim;
     private float massSim;
 
-
+    private Vector3 periapsis;
+    private Vector3 ascendingNode;
     public void Awake()
     {
         aphelHeightSim = semiMajorAxis * (1 + excentricity) * (149597870700 / distanceUmrechnung);
         semiMajorAxisSim = semiMajorAxis * (149597870700 / distanceUmrechnung);
         massSim = mass / masseUmrechnung;
-        this.transform.position = new Vector3(Mathf.Cos(inclination / 180f * Mathf.PI) * aphelHeightSim, Mathf.Sin(inclination / 180f * Mathf.PI) * aphelHeightSim, this.transform.position.z);
+        //argumentOfPeriapsis += 180;
+        //this.transform.position = new Vector3(Mathf.Cos(inclination / 180f * Mathf.PI) * aphelHeightSim, Mathf.Sin(inclination / 180f * Mathf.PI) * aphelHeightSim, this.transform.position.z);
+
+        //Bestimmen der Ascending Node. Die AscendingNode befindet sich auf der XZ ebene mit einem Winkel longitude Of Ascending Node von einem festen Bezugspunkt
+        //Quaternion ist eine Drehung von longitudeOfAscendingNode Grad im den Vektor (0,1,0) (Y-Achse) des Vektors (1,0,0) mit der länge aphelHeightSim;
+        ascendingNode = Quaternion.AngleAxis(longitudeOfAscendingNode, new Vector3(0, 1, 0)) * new Vector3(1,0,0) * aphelHeightSim;
+        //Vektor der auf der Bahnebene des Planeten Liegt. Er ist orthogonal zu ascendingNode.
+        Vector3 ascendingPlanePoint = new Vector3(-ascendingNode.z / ascendingNode.x, 0, 1);
+        //der um inclination um den Vektor ascendingNode gedreht wird.
+        ascendingPlanePoint = Quaternion.AngleAxis(inclination, ascendingNode) * ascendingPlanePoint;
+        //Bestimmung eines Orthogonalen Vektors zu der Ebene die von ascendingNode und ascendingPlanePoint aufgespannt wird.
+        Vector3 orthogonalToInclinationPlane = new Vector3(ascendingNode.y * ascendingPlanePoint.z - ascendingNode.z * ascendingPlanePoint.y,
+                                                           ascendingNode.z * ascendingPlanePoint.x - ascendingNode.x * ascendingPlanePoint.z,
+                                                           ascendingNode.x * ascendingPlanePoint.y - ascendingNode.y * ascendingPlanePoint.x);
+        //Drehung des Punktes ascendingNode um den Winkel argumentOfPeriapsis um die Axe orthogonalToInclinationPlane. Hier befindet sich die Periapsis des Punktes
+        //in unserem Fall die Apoapsis weil diese 180° von der periapsis entfernt ist und wir argumentOfPeriapsis += 180 rechenen.
+        periapsis = Quaternion.AngleAxis(argumentOfPeriapsis, orthogonalToInclinationPlane) * ascendingNode;
+        this.transform.position = periapsis;
     }
 
     public void Start()
     {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-        //this.transform.position = new Vector3(Mathf.Cos(inclination/180f*Mathf.PI) * aphelHeightSim, Mathf.Sin(inclination / 180f * Mathf.PI) * aphelHeightSim, this.transform.position.z); 
         rb.mass = massSim;
-        float apohelSpeed = Mathf.Sqrt(bezugssystem.getMassSim() * ((2 / aphelHeightSim) - (1 / semiMajorAxisSim)));
+        float apohelSpeed = Mathf.Sqrt(AttractionManager.SPEED * bezugssystem.getMassSim() * ((2 / aphelHeightSim) - (1 / semiMajorAxisSim)));
         //Wegen error im Debug.Log
         if(!float.IsNaN(apohelSpeed))
         {
-            rb.velocity = new Vector3(0, 0, apohelSpeed);
+            rb.velocity = new Vector3(-periapsis.z / periapsis.x, 0, 1).normalized * apohelSpeed;
         }
     }
 
