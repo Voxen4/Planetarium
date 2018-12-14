@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetPos : MonoBehaviour {
+public class PlanetPos {
     public readonly int planet;
     private Dictionary<Date,Parsed> parsedPositions = new Dictionary<Date,Parsed>();
 
