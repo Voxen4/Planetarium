@@ -24,10 +24,11 @@ public class PlanetData : MonoBehaviour {
     //Longitude Of Ascending Node in deg (mit Uhrzeigersinn), Winkel zwischen Ascending Node des Orbits und einer festen Referenzrichtung entlang der Referenzebene.
     public float longitudeOfAscendingNode;
     //Argument of Periapsis in deg (mit Uhrzeigersinn): Winkel zwischen Ascending Node und Periapsis des Orbits entlang der Bahnebene.
-    public float argumentOfPeriapsis;
+    public float longitudeOfPeriapsis;
 
     //Private Attribute sind umgerechnete public Attribute. Mit diese wird später gerechnet
-    private float aphelHeightSim;
+    private float apoapsisHeightSim;
+    private float periapsisHeightSim;
     private float semiMajorAxisSim;
     private float massSim;
 
@@ -35,7 +36,8 @@ public class PlanetData : MonoBehaviour {
     private Vector3 ascendingNode;
     public void Awake()
     {
-        aphelHeightSim = semiMajorAxis * (1 + excentricity) * (149597870700 / distanceUmrechnung);
+        apoapsisHeightSim = semiMajorAxis * (1 + excentricity) * (149597870700 / distanceUmrechnung);
+        periapsisHeightSim = semiMajorAxis *(1 - excentricity) * (149597870700 / distanceUmrechnung);
         semiMajorAxisSim = semiMajorAxis * (149597870700 / distanceUmrechnung);
         massSim = mass / masseUmrechnung;
         //argumentOfPeriapsis += 180;
@@ -43,7 +45,7 @@ public class PlanetData : MonoBehaviour {
 
         //Bestimmen der Ascending Node. Die AscendingNode befindet sich auf der XZ ebene mit einem Winkel longitude Of Ascending Node von einem festen Bezugspunkt
         //Quaternion ist eine Drehung von longitudeOfAscendingNode Grad im den Vektor (0,1,0) (Y-Achse) des Vektors (1,0,0) mit der länge aphelHeightSim;
-        ascendingNode = Quaternion.AngleAxis(longitudeOfAscendingNode, new Vector3(0, 1, 0)) * new Vector3(1,0,0) * aphelHeightSim;
+        ascendingNode = Quaternion.AngleAxis(longitudeOfAscendingNode, new Vector3(0, 1, 0)) * new Vector3(1,0,0) * periapsisHeightSim;
         //Vektor der auf der Bahnebene des Planeten Liegt. Er ist orthogonal zu ascendingNode.
         Vector3 ascendingPlanePoint = new Vector3(-ascendingNode.z / ascendingNode.x, 0, 1);
         //der um inclination um den Vektor ascendingNode gedreht wird.
@@ -54,7 +56,7 @@ public class PlanetData : MonoBehaviour {
                                                            ascendingNode.x * ascendingPlanePoint.y - ascendingNode.y * ascendingPlanePoint.x);
         //Drehung des Punktes ascendingNode um den Winkel argumentOfPeriapsis um die Axe orthogonalToInclinationPlane. Hier befindet sich die Periapsis des Punktes
         //in unserem Fall die Apoapsis weil diese 180° von der periapsis entfernt ist und wir argumentOfPeriapsis += 180 rechenen.
-        periapsis = Quaternion.AngleAxis(argumentOfPeriapsis, orthogonalToInclinationPlane) * ascendingNode;
+        periapsis = Quaternion.AngleAxis(longitudeOfPeriapsis, orthogonalToInclinationPlane) * ascendingNode;
         this.transform.position = periapsis;
     }
 
@@ -62,11 +64,12 @@ public class PlanetData : MonoBehaviour {
     {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.mass = massSim;
-        float apohelSpeed = Mathf.Sqrt(AttractionManager.SPEED * bezugssystem.getMassSim() * ((2 / aphelHeightSim) - (1 / semiMajorAxisSim)));
+        float apoapsisSpeed = Mathf.Sqrt(AttractionManager.SPEED * bezugssystem.getMassSim() * ((2 / apoapsisHeightSim) - (1 / semiMajorAxisSim)));
+        float periapsisSpeed = Mathf.Sqrt(AttractionManager.SPEED * bezugssystem.getMassSim() * ((2 / periapsisHeightSim) - (1 / semiMajorAxisSim)));
         //Wegen error im Debug.Log
-        if(!float.IsNaN(apohelSpeed))
+        if (!float.IsNaN(periapsisSpeed))
         {
-            rb.velocity = new Vector3(-periapsis.z / periapsis.x, 0, 1).normalized * apohelSpeed;
+            rb.velocity = new Vector3(-periapsis.z / periapsis.x, 0, 1).normalized * periapsisSpeed;
         }
     }
 
