@@ -34,6 +34,11 @@ public class PlanetData : MonoBehaviour {
 
     private Vector3 periapsis;
     private Vector3 ascendingNode;
+
+    /*
+     *Die Awake Methode wird benutzt um alle Attribute (außer Velocity) des Planeten in die Simulationsdaten umzurechnen.
+     * Sie wird vor der Start Methode aufgerufen.
+     */
     public void Awake()
     {
         apoapsisHeightSim = semiMajorAxis * (1 + excentricity) * (149597870700 / distanceUmrechnung);
@@ -69,7 +74,9 @@ public class PlanetData : MonoBehaviour {
         //Wegen error im Debug.Log
         if (!float.IsNaN(periapsisSpeed))
         {
-            //rb.velocity = new Vector3(-periapsis.z / periapsis.x, 0, 1).normalized * periapsisSpeed;
+            //Richtung des Vektors anpassen um den Orbit im Uhrzeigersinn zu forcieren.
+            //Wenn der Planet auf der linken Seite der Sonne startet, dann muss er sich nach "oben" wegbewegen.
+            //Andererseits, wenn der Planet links startet muss er sich nach unten bewegen.
             if (this.transform.position.x < 0)
             {
                 rb.velocity = new Vector3(-periapsis.z / periapsis.x, 0, 1).normalized * periapsisSpeed;
