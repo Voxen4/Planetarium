@@ -1323,6 +1323,15 @@ Prefab:
       propertyPath: bezugssystem
       value: 
       objectReference: {fileID: 469290833}
+    - target: {fileID: 114610428264097072, guid: 7c8bf8b3f77abb84f8b55e6686cdc776,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 469290840}
+    - target: {fileID: 1654815640645674, guid: 7c8bf8b3f77abb84f8b55e6686cdc776, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c8bf8b3f77abb84f8b55e6686cdc776, type: 2}
   m_IsPrefabAsset: 0
@@ -1337,6 +1346,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 469290831}
   m_Script: {fileID: 11500000, guid: 51ad33f618d38c24f8dfba2de7b4cad2, type: 3}
+--- !u!4 &469290840 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4965114693895676, guid: 7c8bf8b3f77abb84f8b55e6686cdc776,
+    type: 2}
+  m_PrefabInternal: {fileID: 469290831}
 --- !u!1 &525522011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,9 +1432,10 @@ GameObject:
   - component: {fileID: 534669903}
   - component: {fileID: 534669907}
   - component: {fileID: 534669906}
+  - component: {fileID: 534669908}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1454,7 +1469,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 9e+22
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1511,6 +1526,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attractors: []
+--- !u!114 &534669908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0120b0b7492b1a944b95c75bfb71404e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  smoothTime: 0.8
+  smoothSpeed: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &655639012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,6 +1753,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  smoothSpeed: 0.125
+  offset: {x: 0, y: 0, z: 0}
 --- !u!54 &669436783
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4360,6 +4393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  smoothSpeed: 0.125
+  offset: {x: 0, y: 0, z: 0}
 --- !u!54 &1923821559
 Rigidbody:
   m_ObjectHideFlags: 0

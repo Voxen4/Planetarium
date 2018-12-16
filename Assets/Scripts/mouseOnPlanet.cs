@@ -7,12 +7,19 @@ public class mouseOnPlanet : MonoBehaviour
 {
     private string text;
 
+    public Transform target;
+
+    public float smoothSpeed = 0.125f;
+    public Vector3 offset;
+
     private string currentToolTipText = "";
     private GUIStyle frontStyle;
     private GUIStyle backStyle;
     private Font myFont;
 
     PlanetData pd;
+
+
     
     void Start()
     {
@@ -37,12 +44,6 @@ public class mouseOnPlanet : MonoBehaviour
     void OnMouseEnter()
     {
         currentToolTipText = text;
-    }
-
-    private void OnMouseDown()
-    {
-        //Center Cam on Planet TODO Follow ?
-        //Camera.main.transform.position = this.gameObject.transform.position;
     }
 
     void OnMouseExit()
