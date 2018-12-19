@@ -29,11 +29,11 @@ https://www.projectpluto.com/source.htm
 
 
 To-Do:
-
-- Umwandlung der Koordinanten in X und Y
-- Rotation der Planenten mit den Listen
-- Kalender für die einzelnen Tage aus den Listen
-- Umlaufbahn programmieren
-- Gravitation/Anziehskraft programmieren
-- Ticks auf die Jahre anpassen
-- TBC...
+- DOKU
+- Fehlerabschätzung mit mehreren Punkten
+- N-Körperproblem(Mond)(Sonne nicht mehr statisch), Erdenmond und vllt Mars und Venus Monde
+- Log-Funktion
+- Beeinflussung Asteroid durchs Sonnensystem
+- Geschwindigkeit der Simulation 
+- von Frame auf Tick
+- Datumsanzeige während der Simulation
