@@ -32,8 +32,7 @@ To-Do:
 - DOKU
 - Fehlerabschätzung mit mehreren Punkten
 - N-Körperproblem(Mond)(Sonne nicht mehr statisch), Erdenmond und vllt Mars und Venus Monde
-- Log-Funktion
-- Beeinflussung Asteroid durchs Sonnensystem
-- Geschwindigkeit der Simulation 
-- von Frame auf Tick
+- Geschwindigkeit der Simulation von Frame auf Tick
 - Datumsanzeige während der Simulation
+- Startsposition(Energieerhaltungssatz)
+- 
