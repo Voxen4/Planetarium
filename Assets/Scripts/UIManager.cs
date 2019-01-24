@@ -4,7 +4,8 @@ using UnityEditor;
 public class UIManager : MonoBehaviour
 {
     public GameMgr GM;
-	void Start ()
+
+ 	void Start ()
 	{
 
 	}
@@ -13,7 +14,14 @@ public class UIManager : MonoBehaviour
 	{
         if (Input.GetKeyDown("escape"))
         {
+            if(GM != null)
+            {
             GM.TogglePauseMenu();
+            }
+            else
+            {
+                GameMgr.instance.TogglePauseMenu();
+            }
         }
     }
     

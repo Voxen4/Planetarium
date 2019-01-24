@@ -38,7 +38,7 @@ public class PlanetPos {
 	}
 
     public class Date{    
-        public short _year,_day;
+        public short _year = 1998,_day = 1;
      }
     public class Parsed
     {
