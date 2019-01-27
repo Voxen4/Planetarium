@@ -100,16 +100,18 @@ public class RelativeAttributesTo : MonoBehaviour {
     }
     string PrintValues()
     {
+        
         if(FileWriter == null)
         {
              FileWriter = File.AppendText(fileName);
         }
-        string s =  RelativeTo.name + " " +  RelativePos.ToString() + "	" +  RelativeVel.ToString()+ "	" +  ApoapsisHeight.ToString()
+        string s =  this.gameObject.name + " " +  RelativePos.ToString() + "	" +  RelativeVel.ToString()+ "	" +  ApoapsisHeight.ToString()
             + "	" +  PeriapsisHeight.ToString()+ "	" +  CurrentDistance.ToString()+ "	" +  StartTheta.ToString()+ "	" +  StartPhi.ToString()+ "	" +  currentTheta
             + "	" +  currentPhi.ToString()+ "	" +  maxDistanceAngleTheta.ToString()+ "	" +   maxDistanceAnglePhi.ToString()+ "	" +  minDistanceAngleTheta.ToString()
             + "	" +  minDistanceAnglePhi.ToString()+ "	" +  period.ToString()+ "	" +  spin.ToString()+ "	" +  lastPos.ToString()+ "	" +  lastPhi.ToString()+ "	" +  periodSum.ToString();
                 FileWriter.WriteLine(s);
         return s; 
+        
     }
 
         public PlanetData RelativeTo

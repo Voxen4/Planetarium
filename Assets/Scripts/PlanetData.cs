@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlanetData : MonoBehaviour {
     static float masseUmrechnung = (float)  5.9722f * Mathf.Pow(10,24); //in kg, Masse Erde
     static float distanceUmrechnung = 1000000000;    //in km, Entfernung Erde,Sonne
+    static float AE = 149597870700f;    //in km = 1 AE
     static float gravitationskonstante =6.67408f * Mathf.Pow(10, -11);
     static float vUmrechnung = Mathf.Sqrt(996461570) / 50;
     //Alle Public Attribute sind angaben die vom Benutzer eingegeben werden müssen.
@@ -25,6 +26,13 @@ public class PlanetData : MonoBehaviour {
     public float longitudeOfAscendingNode;
     //Argument of Periapsis in deg (mit Uhrzeigersinn): Winkel zwischen Ascending Node und Periapsis des Orbits entlang der Bahnebene.
     public float longitudeOfPeriapsis;
+    //Starting Point in AU. Daten von NASA Horizon
+    public Vector3 startingPoint;
+
+    private Vector3 velocityDir;
+
+    //DEBUG
+    public float error;
 
     //Private Attribute sind umgerechnete public Attribute. Mit diese wird später gerechnet
     private float apoapsisHeightSim;
@@ -41,9 +49,9 @@ public class PlanetData : MonoBehaviour {
      */
     public void Awake()
     {
-        apoapsisHeightSim = semiMajorAxis * (1 + excentricity) * (149597870700 / distanceUmrechnung);
-        periapsisHeightSim = semiMajorAxis *(1 - excentricity) * (149597870700 / distanceUmrechnung);
-        semiMajorAxisSim = semiMajorAxis * (149597870700 / distanceUmrechnung);
+        apoapsisHeightSim = semiMajorAxis * (1 + excentricity) * (AE / distanceUmrechnung);
+        periapsisHeightSim = semiMajorAxis *(1 - excentricity) * (AE / distanceUmrechnung);
+        semiMajorAxisSim = semiMajorAxis * (AE / distanceUmrechnung);
         massSim = mass / masseUmrechnung;
         //argumentOfPeriapsis += 180;
         //this.transform.position = new Vector3(Mathf.Cos(inclination / 180f * Mathf.PI) * aphelHeightSim, Mathf.Sin(inclination / 180f * Mathf.PI) * aphelHeightSim, this.transform.position.z);
@@ -63,13 +71,34 @@ public class PlanetData : MonoBehaviour {
         //in unserem Fall die Apoapsis weil diese 180° von der periapsis entfernt ist und wir argumentOfPeriapsis += 180 rechenen.
         periapsis = Quaternion.AngleAxis(longitudeOfPeriapsis, orthogonalToInclinationPlane) * ascendingNode;
         this.transform.position = periapsis;
+
+        //NEW
+        //Das Zentrum der Ellipse befindet sich 1 * semiMajorAxis von der Periapsis entfernt in Richtung des Brennpunktes (also Sonne). Da Die Sonne sich bei 0/0/0 befindet, muss sie nicht aufgeschrieben werden.
+        Vector3 ellipseCenter = periapsis - (periapsis.normalized * semiMajorAxis * (AE / distanceUmrechnung));
+
+        //Starting Point ist in AE angegeben und muss umgerechnet werden.
+        startingPoint = startingPoint * (AE / distanceUmrechnung);
+
+        //NUn muss ein Vektor konstruiert werden, der orthogonal zu dem vektor ellipseCenter - startingPoint liegt. Zudem muss der Vektor in der Ebene des Orbits liegen d.h.
+        //auch orthogonal zu dem Normalenvektor der Ebene sein.
+        Vector3 centerToStartingPoint = startingPoint - ellipseCenter;
+        //der andere Vektor der die Ebene aufspannt ist orthogonalToInclinationPlane
+        velocityDir = new Vector3(orthogonalToInclinationPlane.y * centerToStartingPoint.z - orthogonalToInclinationPlane.z * centerToStartingPoint.y,
+                                          orthogonalToInclinationPlane.z * centerToStartingPoint.x - orthogonalToInclinationPlane.x * centerToStartingPoint.z,
+                                          orthogonalToInclinationPlane.x * centerToStartingPoint.y - orthogonalToInclinationPlane.y * centerToStartingPoint.x);
+
+
+        this.transform.position = startingPoint;
+
+        error = periapsis.magnitude - startingPoint.magnitude;
+
     }
 
     public void Start()
     {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.mass = massSim;
-        float apoapsisSpeed = Mathf.Sqrt(AttractionManager.SPEED * bezugssystem.getMassSim() * ((2 / apoapsisHeightSim) - (1 / semiMajorAxisSim)));
+        /*float apoapsisSpeed = Mathf.Sqrt(AttractionManager.SPEED * bezugssystem.getMassSim() * ((2 / apoapsisHeightSim) - (1 / semiMajorAxisSim)));
         float periapsisSpeed = Mathf.Sqrt(AttractionManager.SPEED * bezugssystem.getMassSim() * ((2 / periapsisHeightSim) - (1 / semiMajorAxisSim)));
         //Wegen error im Debug.Log
         if (!float.IsNaN(periapsisSpeed))
@@ -84,6 +113,22 @@ public class PlanetData : MonoBehaviour {
             {
                 rb.velocity = new Vector3(periapsis.z / periapsis.x, 0, -1).normalized * periapsisSpeed;
             }
+        }*/
+
+
+        //NEW
+        float startSpeed = Mathf.Sqrt((AttractionManager.SPEED * (bezugssystem.getMassSim() + massSim)) * ((2 / startingPoint.magnitude) - (1 / semiMajorAxisSim)));
+        //Wegen error im Debug.Log
+        if (!float.IsNaN(startSpeed))
+        {
+            if(this.transform.position.z < 0)
+            {
+                rb.velocity = velocityDir.normalized * startSpeed;
+            } else
+            {
+                rb.velocity = -velocityDir.normalized * startSpeed;
+            }
+
         }
     }
 

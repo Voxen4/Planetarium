@@ -209,6 +209,21 @@ Prefab:
       propertyPath: longitudeOfPeriapsis
       value: 77.45645
       objectReference: {fileID: 0}
+    - target: {fileID: 114859465820861590, guid: eeff3417afd28d347996781268cd6cfd,
+        type: 2}
+      propertyPath: startingPoint.x
+      value: 0.32088152
+      objectReference: {fileID: 0}
+    - target: {fileID: 114859465820861590, guid: eeff3417afd28d347996781268cd6cfd,
+        type: 2}
+      propertyPath: startingPoint.y
+      value: -0.021396529
+      objectReference: {fileID: 0}
+    - target: {fileID: 114859465820861590, guid: eeff3417afd28d347996781268cd6cfd,
+        type: 2}
+      propertyPath: startingPoint.z
+      value: 0.09919523
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eeff3417afd28d347996781268cd6cfd, type: 2}
   m_IsPrefabAsset: 0
@@ -404,6 +419,21 @@ Prefab:
         type: 2}
       propertyPath: longitudeOfPeriapsis
       value: 14.75385
+      objectReference: {fileID: 0}
+    - target: {fileID: 114854841136815466, guid: 88d526ba161c6e045817ee29d33fe55c,
+        type: 2}
+      propertyPath: startingPoint.x
+      value: 3.406605
+      objectReference: {fileID: 0}
+    - target: {fileID: 114854841136815466, guid: 88d526ba161c6e045817ee29d33fe55c,
+        type: 2}
+      propertyPath: startingPoint.y
+      value: -0.06089135
+      objectReference: {fileID: 0}
+    - target: {fileID: 114854841136815466, guid: 88d526ba161c6e045817ee29d33fe55c,
+        type: 2}
+      propertyPath: startingPoint.z
+      value: -3.76053
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88d526ba161c6e045817ee29d33fe55c, type: 2}
@@ -711,6 +741,11 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 54265522669033832, guid: 7c8bf8b3f77abb84f8b55e6686cdc776,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c8bf8b3f77abb84f8b55e6686cdc776, type: 2}
   m_IsPrefabAsset: 0
@@ -920,6 +955,8 @@ MonoBehaviour:
   inclination: 1.85061
   longitudeOfAscendingNode: 49.57854
   longitudeOfPeriapsis: 336.04083
+  startingPoint: {x: -1.3955537, y: 0.053378683, z: 0.9043964}
+  error: 0
 --- !u!114 &669436781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,6 +1246,21 @@ Prefab:
         type: 2}
       propertyPath: longitudeOfPeriapsis
       value: 170.96423
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942659089592846, guid: b84110b7036f5054cb1378c14675acf6,
+        type: 2}
+      propertyPath: startingPoint.x
+      value: -1.2414392
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942659089592846, guid: b84110b7036f5054cb1378c14675acf6,
+        type: 2}
+      propertyPath: startingPoint.y
+      value: 0.086479366
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942659089592846, guid: b84110b7036f5054cb1378c14675acf6,
+        type: 2}
+      propertyPath: startingPoint.z
+      value: 18.90454
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b84110b7036f5054cb1378c14675acf6, type: 2}
@@ -1508,6 +1560,21 @@ Prefab:
       propertyPath: longitudeOfPeriapsis
       value: 44.97135
       objectReference: {fileID: 0}
+    - target: {fileID: 114825255688359346, guid: 2c17eeba75f8f504391ac723bd96eda7,
+        type: 2}
+      propertyPath: startingPoint.x
+      value: -20.909262
+      objectReference: {fileID: 0}
+    - target: {fileID: 114825255688359346, guid: 2c17eeba75f8f504391ac723bd96eda7,
+        type: 2}
+      propertyPath: startingPoint.y
+      value: 0.8433793
+      objectReference: {fileID: 0}
+    - target: {fileID: 114825255688359346, guid: 2c17eeba75f8f504391ac723bd96eda7,
+        type: 2}
+      propertyPath: startingPoint.z
+      value: -8.409021
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c17eeba75f8f504391ac723bd96eda7, type: 2}
   m_IsPrefabAsset: 0
@@ -1741,6 +1808,21 @@ Prefab:
       propertyPath: longitudeOfPeriapsis
       value: 102.94719
       objectReference: {fileID: 0}
+    - target: {fileID: 114629906109394140, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
+        type: 2}
+      propertyPath: startingPoint.x
+      value: -0.1827171
+      objectReference: {fileID: 0}
+    - target: {fileID: 114629906109394140, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
+        type: 2}
+      propertyPath: startingPoint.y
+      value: 0.0001080375
+      objectReference: {fileID: 0}
+    - target: {fileID: 114629906109394140, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
+        type: 2}
+      propertyPath: startingPoint.z
+      value: 0.9661172
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6, type: 2}
   m_IsPrefabAsset: 0
@@ -1950,6 +2032,8 @@ MonoBehaviour:
   inclination: 3.39471
   longitudeOfAscendingNode: 76.68069
   longitudeOfPeriapsis: 131.53297
+  startingPoint: {x: 0.09427794, y: 0.004090101, z: 0.7138888}
+  error: 0
 --- !u!114 &1923821557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2468,6 +2552,21 @@ Prefab:
         type: 2}
       propertyPath: longitudeOfPeriapsis
       value: 92.43194
+      objectReference: {fileID: 0}
+    - target: {fileID: 114976400805478810, guid: f59c22ab7cb76f249a62dd11c7cd4a38,
+        type: 2}
+      propertyPath: startingPoint.x
+      value: -9.007367
+      objectReference: {fileID: 0}
+    - target: {fileID: 114976400805478810, guid: f59c22ab7cb76f249a62dd11c7cd4a38,
+        type: 2}
+      propertyPath: startingPoint.y
+      value: 0.3139899
+      objectReference: {fileID: 0}
+    - target: {fileID: 114976400805478810, guid: f59c22ab7cb76f249a62dd11c7cd4a38,
+        type: 2}
+      propertyPath: startingPoint.z
+      value: 2.500429
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f59c22ab7cb76f249a62dd11c7cd4a38, type: 2}
