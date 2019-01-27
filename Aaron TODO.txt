@@ -2,7 +2,7 @@ Planetarium TODO:
 
 Startvelocity ändern (manche Planeten bewegen sich gegen den Uhrzeigersinn) DONE
 Simulationsgeschwindigkeit bestimmen.
-Beliebige Ortsvektor und Bewegungsvektor (velocity) eines Planeten auf seinem Orbit bestimmen (mit ELON)
+Beliebige Ortsvektor und Bewegungsvektor (velocity) eines Planeten auf seinem Orbit bestimmen DONE
 (Simulations-)Fehler berrechnen
 
 SemiMajorAxis in Millionen Km angeben (Doch nicht)
