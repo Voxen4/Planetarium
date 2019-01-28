@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlanetData : MonoBehaviour {
-    static float masseUmrechnung = (float)  5.9722f * Mathf.Pow(10,24); //in kg, Masse Erde
+    static public float masseUmrechnung = (float)  5.9722f * Mathf.Pow(10,24); //in kg, Masse Erde
     static float distanceUmrechnung = 1000000000;    //in km, Entfernung Erde,Sonne
     static float AE = 149597870700f;    //in km = 1 AE
     static float gravitationskonstante =6.67408f * Mathf.Pow(10, -11);
@@ -12,8 +12,6 @@ public class PlanetData : MonoBehaviour {
     //Das System in dem sich der Planet befindet.
     //Ist wichtig um die initale Geschwindigkeit des Planeten zu berrechnen.
     public PlanetData bezugssystem;
-    //Die Masse des Planeten in kg;
-    public float mass;             
     //Der Durchmesser des Planeten.
     public float diameter;        
     //LargeSemiAxis (in AE)
@@ -38,8 +36,8 @@ public class PlanetData : MonoBehaviour {
     private float apoapsisHeightSim;
     private float periapsisHeightSim;
     private float semiMajorAxisSim;
-    private float massSim;
-
+    //private float massSim;
+   
     private Vector3 periapsis;
     private Vector3 ascendingNode;
 
@@ -52,7 +50,8 @@ public class PlanetData : MonoBehaviour {
         apoapsisHeightSim = semiMajorAxis * (1 + excentricity) * (AE / distanceUmrechnung);
         periapsisHeightSim = semiMajorAxis *(1 - excentricity) * (AE / distanceUmrechnung);
         semiMajorAxisSim = semiMajorAxis * (AE / distanceUmrechnung);
-        massSim = mass / masseUmrechnung;
+        Attractor attractor = this.gameObject.GetComponent<Attractor>();
+        //massSim = attractor.mass / masseUmrechnung;
         //argumentOfPeriapsis += 180;
         //this.transform.position = new Vector3(Mathf.Cos(inclination / 180f * Mathf.PI) * aphelHeightSim, Mathf.Sin(inclination / 180f * Mathf.PI) * aphelHeightSim, this.transform.position.z);
 
@@ -97,7 +96,7 @@ public class PlanetData : MonoBehaviour {
     public void Start()
     {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-        rb.mass = massSim;
+        rb.mass = GetComponent<Attractor>().mass;
         /*float apoapsisSpeed = Mathf.Sqrt(AttractionManager.SPEED * bezugssystem.getMassSim() * ((2 / apoapsisHeightSim) - (1 / semiMajorAxisSim)));
         float periapsisSpeed = Mathf.Sqrt(AttractionManager.SPEED * bezugssystem.getMassSim() * ((2 / periapsisHeightSim) - (1 / semiMajorAxisSim)));
         //Wegen error im Debug.Log
@@ -117,7 +116,7 @@ public class PlanetData : MonoBehaviour {
 
 
         //NEW
-        float startSpeed = Mathf.Sqrt((AttractionManager.SPEED * (bezugssystem.getMassSim() + massSim)) * ((2 / startingPoint.magnitude) - (1 / semiMajorAxisSim)));
+        float startSpeed = Mathf.Sqrt((AttractionManager.SPEED * (bezugssystem.getMassSim() +  GetComponent<Attractor>().mass)) * ((2 / startingPoint.magnitude) - (1 / semiMajorAxisSim)));
         //Wegen error im Debug.Log
         if (!float.IsNaN(startSpeed))
         {
@@ -134,6 +133,6 @@ public class PlanetData : MonoBehaviour {
 
     public float getMassSim()
     {
-        return massSim;
+        return  GetComponent<Attractor>().mass;
     }
 }

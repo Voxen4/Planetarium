@@ -5,10 +5,11 @@ using UnityEngine;
 public class AttractionManager : MonoBehaviour {
     public static float SPEED = 1;
 
-    public Attractor[] attractors;
+    public static List<Attractor> attractors;
 	// Use this for initialization
 	void Start () {
-        attractors = FindObjectsOfType<Attractor>();
+        attractors = new List<Attractor>();
+        attractors.AddRange(FindObjectsOfType<Attractor>());
 	}
 	
 	// Update is called once per frame
