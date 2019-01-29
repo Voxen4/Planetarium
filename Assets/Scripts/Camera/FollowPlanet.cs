@@ -7,9 +7,9 @@ public class FollowPlanet : MonoBehaviour {
 
     bool clicked;
     public Transform planet;
-    public float smoothTime = 0.8f;
-    public Vector3 smoothSpeed = Vector3.zero;
-    public Vector3 offset;
+    float smoothTime = 0.8f;
+    Vector3 smoothSpeed = Vector3.zero;
+    Vector3 offset;
 
     private void Start()
     {
