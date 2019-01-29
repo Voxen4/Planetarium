@@ -18,9 +18,12 @@ public class PlanetModel : MonoBehaviour {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         Attractor attractor = gameObject.GetComponent<Attractor>();
         PlanetData pD = gameObject.GetComponent<PlanetData>();
-        if (gameObject.name == "Meteor(Clone)" || gameObject.name == "Meteor")
-            this.position = new Vector3d (4498.4, 3.051758e-05, 200);
-        else this.position = new Vector3d (pD.startingPoint);
+        if (gameObject.name == "Meteor(Clone)")
+            this.position = new Vector3d (Camera.main.transform.position);
+        else if (gameObject.name == "Meteor")
+        {
+            this.position = new Vector3d(5000,5000,5000);
+        } else this.position = new Vector3d(pD.startingPoint);
         this.mass = rb.mass;
         this.velocity = new Vector3d (rb.velocity);
         this.force = Vector3d.zero;

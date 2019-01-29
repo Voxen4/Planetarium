@@ -10,10 +10,12 @@ public class FollowPlanet : MonoBehaviour {
     float smoothTime = 0.8f;
     Vector3 smoothSpeed = Vector3.zero;
     Vector3 offset;
+    Vector3 look;
 
     private void Start()
     {
         clicked = false;
+        
     }
 
     public void ButtonAction()

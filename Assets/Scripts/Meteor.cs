@@ -23,9 +23,9 @@ public class Meteor : MonoBehaviour
 
             Rigidbody clone;
             clone = (Rigidbody)Instantiate(projectile, camera.gameObject.transform.position, projectile.rotation);
-            clone.velocity = ray.direction * 20;
-            clone.GetComponent<Rigidbody>().mass = 1;
-            clone.GetComponent<Attractor>().mass = 1;
+            clone.velocity = ray.direction * 2;
+            clone.GetComponent<Rigidbody>().mass = 1000;
+            clone.GetComponent<Attractor>().mass = 1000;
             //GetComponents<AttractionManager>()[0].attractors.Add(clone.gameObject.GetComponent<Attractor>());
             AttractionManager.attractors.Add(clone.gameObject.GetComponent<Attractor>());
         }

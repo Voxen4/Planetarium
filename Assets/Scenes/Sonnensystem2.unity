@@ -1352,7 +1352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb335de4b0f8cec40b392dfea59a3fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camZoomSpeed: 20
+  camZoomSpeed: 200
   camDragSpeed: 2
   rotationSpeed: 3
 --- !u!114 &534669907
@@ -2046,7 +2046,7 @@ TrailRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: f42669b40cb69644d80cfd4c8f2647c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2075,7 +2075,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.4921875
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2161,7 +2161,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7dc4eba3ccdf87f458c302ba247f20cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
