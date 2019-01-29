@@ -29,6 +29,7 @@ public class Meteor : MonoBehaviour
             //GetComponents<AttractionManager>()[0].attractors.Add(clone.gameObject.GetComponent<Attractor>());
             AttractionManager.attractors.Add(clone.gameObject.GetComponent<Attractor>());
         }
+
     }
 
 }
