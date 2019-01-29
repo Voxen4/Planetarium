@@ -8,7 +8,7 @@ public class GameMgr : MonoBehaviour {
     
     public static GameMgr instance; 
     private string nextScene;
-    private PlanetPos.Date date; //Date Selected in Options or null then 01.01.1998
+    private NasaData.Date date; //Date Selected in Options or null then 01.01.1998
     void Awake() 
     { 
         if (instance) { 
@@ -24,16 +24,15 @@ public class GameMgr : MonoBehaviour {
     }
 
    
-    public void setPositions(PlanetPos.Date date)
+    public void setDate(NasaData.Date date)
     {
        
-        foreach (int i in System.Enum.GetValues(typeof(Planet)))
-        {
-            Planet planet = (Planet)Enum.ToObject(typeof(Planet),i);
-            PlanetPos pos = StartUp.getInitPosition(planet);
-            PlanetPos.Parsed parsed = pos.GetParsed(date);
-            //TODO Set Pos from parsed Positions
-        };
+       this.date = date;
+    }
+
+    public NasaData.Date getDate()
+    {
+        return date;
     }
 
     public void TogglePauseMenu()
@@ -85,11 +84,5 @@ public class GameMgr : MonoBehaviour {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextScene)); 
         }
 	}
-
-    //Start Planets on a given Day is previous selected in Options
-    void restorePlanetPositions()
-    {
-        //date
-    }
     
 }
