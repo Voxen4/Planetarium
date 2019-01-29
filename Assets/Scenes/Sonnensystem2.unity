@@ -249,6 +249,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relativeTo: {fileID: 469290833}
+--- !u!114 &72615455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 72615453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1382c6428b9126043b967e5764ecec30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planet: 3
+  asset: {fileID: 4900000, guid: 8f9dd9513eae45242893582c6e3f45e5, type: 3}
 --- !u!96 &72615463
 TrailRenderer:
   serializedVersion: 2
@@ -465,6 +478,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relativeTo: {fileID: 469290833}
+--- !u!114 &157913022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 157913020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1382c6428b9126043b967e5764ecec30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planet: 1
+  asset: {fileID: 4900000, guid: 11ba8a2c13f2a6e44bec16dc782bd32d, type: 3}
 --- !u!96 &157913030
 TrailRenderer:
   serializedVersion: 2
@@ -912,7 +938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7607516463a7f4aa9184e26fc49043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GM: {fileID: 1519783982}
 --- !u!1 &669436778
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,6 +956,7 @@ GameObject:
   - component: {fileID: 669436780}
   - component: {fileID: 669436779}
   - component: {fileID: 669436788}
+  - component: {fileID: 669436789}
   m_Layer: 0
   m_Name: mars
   m_TagString: Untagged
@@ -1177,6 +1203,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &669436789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 669436778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1382c6428b9126043b967e5764ecec30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planet: 2
+  asset: {fileID: 4900000, guid: 3af86ab9d71ae6147a5d4f5753456f18, type: 3}
 --- !u!1001 &978660634
 Prefab:
   m_ObjectHideFlags: 0
@@ -1301,6 +1340,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relativeTo: {fileID: 469290833}
+--- !u!114 &978660637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 978660635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1382c6428b9126043b967e5764ecec30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planet: 6
+  asset: {fileID: 4900000, guid: 74a1a9c845a9222478f21e56ec7a63e5, type: 3}
 --- !u!96 &978660645
 TrailRenderer:
   serializedVersion: 2
@@ -1619,6 +1671,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relativeTo: {fileID: 469290833}
+--- !u!114 &1572404958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1572404956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1382c6428b9126043b967e5764ecec30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planet: 4
+  asset: {fileID: 4900000, guid: df9869ac5ad23a7408a768534d25a4e1, type: 3}
 --- !u!96 &1572404966
 TrailRenderer:
   serializedVersion: 2
@@ -1882,7 +1947,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7607516463a7f4aa9184e26fc49043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GM: {fileID: 1519783982}
 --- !u!4 &1793233869
 Transform:
   m_ObjectHideFlags: 0
@@ -1901,6 +1965,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1759051516146510, guid: cbf4a37c8321c0d4b8ab9a3a740ff6f6,
     type: 2}
   m_PrefabInternal: {fileID: 1684805057}
+--- !u!114 &1911156281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1911156280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1382c6428b9126043b967e5764ecec30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planet: 0
+  asset: {fileID: 4900000, guid: 417aaf01d07127e40aa1b50d5be44ad1, type: 3}
 --- !u!114 &1911156290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2023,6 +2100,7 @@ GameObject:
   - component: {fileID: 1923821556}
   - component: {fileID: 1923821555}
   - component: {fileID: 1923821564}
+  - component: {fileID: 1923821565}
   m_Layer: 0
   m_Name: venus
   m_TagString: Untagged
@@ -2269,6 +2347,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &1923821565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1923821554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1382c6428b9126043b967e5764ecec30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planet: 7
+  asset: {fileID: 4900000, guid: 2e655ce2fad285f4391e04f017f99575, type: 3}
 --- !u!1001 &1934291655
 Prefab:
   m_ObjectHideFlags: 0
@@ -2361,7 +2452,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f42669b40cb69644d80cfd4c8f2647c0, type: 2}
+      objectReference: {fileID: 2100000, guid: 06d5dbe3bf501d5498cdad32efadc6f7, type: 2}
     - target: {fileID: 114825255688359346, guid: 2c17eeba75f8f504391ac723bd96eda7,
         type: 2}
       propertyPath: m_Enabled
@@ -2639,6 +2730,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relativeTo: {fileID: 469290833}
+--- !u!114 &1984083169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1984083167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1382c6428b9126043b967e5764ecec30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planet: 5
+  asset: {fileID: 4900000, guid: c41ac6da49f0a8f4199eba8da486235c, type: 3}
 --- !u!96 &1984083177
 TrailRenderer:
   serializedVersion: 2

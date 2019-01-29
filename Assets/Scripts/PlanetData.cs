@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetData : MonoBehaviour {
-    static public float masseUmrechnung = (float)  5.9722f * Mathf.Pow(10,24); //in kg, Masse Erde
+public class PlanetData : MonoBehaviour
+{
+    static public float masseUmrechnung = (float)5.9722f * Mathf.Pow(10, 24); //in kg, Masse Erde
     static float distanceUmrechnung = 1000000000;    //in km, Entfernung Erde,Sonne
     static float AE = 149597870700f;    //in km = 1 AE
-    static float gravitationskonstante =6.67408f * Mathf.Pow(10, -11);
+    static float gravitationskonstante = 6.67408f * Mathf.Pow(10, -11);
     static float vUmrechnung = Mathf.Sqrt(996461570) / 50;
     //Alle Public Attribute sind angaben die vom Benutzer eingegeben werden müssen.
     //Das System in dem sich der Planet befindet.
     //Ist wichtig um die initale Geschwindigkeit des Planeten zu berrechnen.
     public PlanetData bezugssystem;
     //Der Durchmesser des Planeten.
-    public float diameter;        
+    public float diameter;
     //LargeSemiAxis (in AE)
-    public float semiMajorAxis;     
+    public float semiMajorAxis;
     //Excetricity
     public float excentricity;
     //Inclination in Grad
@@ -37,7 +38,7 @@ public class PlanetData : MonoBehaviour {
     private float periapsisHeightSim;
     private float semiMajorAxisSim;
     //private float massSim;
-   
+
     private Vector3 periapsis;
     private Vector3 ascendingNode;
 
@@ -48,16 +49,28 @@ public class PlanetData : MonoBehaviour {
     public void Awake()
     {
         apoapsisHeightSim = semiMajorAxis * (1 + excentricity) * (AE / distanceUmrechnung);
-        periapsisHeightSim = semiMajorAxis *(1 - excentricity) * (AE / distanceUmrechnung);
+        periapsisHeightSim = semiMajorAxis * (1 - excentricity) * (AE / distanceUmrechnung);
         semiMajorAxisSim = semiMajorAxis * (AE / distanceUmrechnung);
         Attractor attractor = this.gameObject.GetComponent<Attractor>();
+        NasaData nasaData = this.gameObject.GetComponent<NasaData>();
+        if (nasaData != null)
+        {
+            NasaData.Parsed parsed = nasaData.GetParsed(GameMgr.instance.getDate());
+            if (parsed != null)
+            {
+                startingPoint.x = (float)parsed.X;
+                startingPoint.y = (float)parsed.Y;
+                startingPoint.z = (float)parsed.Z;
+            }
+        }
+
         //massSim = attractor.mass / masseUmrechnung;
         //argumentOfPeriapsis += 180;
         //this.transform.position = new Vector3(Mathf.Cos(inclination / 180f * Mathf.PI) * aphelHeightSim, Mathf.Sin(inclination / 180f * Mathf.PI) * aphelHeightSim, this.transform.position.z);
 
         //Bestimmen der Ascending Node. Die AscendingNode befindet sich auf der XZ ebene mit einem Winkel longitude Of Ascending Node von einem festen Bezugspunkt
         //Quaternion ist eine Drehung von longitudeOfAscendingNode Grad im den Vektor (0,1,0) (Y-Achse) des Vektors (1,0,0) mit der länge aphelHeightSim;
-        ascendingNode = Quaternion.AngleAxis(longitudeOfAscendingNode, new Vector3(0, 1, 0)) * new Vector3(1,0,0) * periapsisHeightSim;
+        ascendingNode = Quaternion.AngleAxis(longitudeOfAscendingNode, new Vector3(0, 1, 0)) * new Vector3(1, 0, 0) * periapsisHeightSim;
         //Vektor der auf der Bahnebene des Planeten Liegt. Er ist orthogonal zu ascendingNode.
         Vector3 ascendingPlanePoint = new Vector3(-ascendingNode.z / ascendingNode.x, 0, 1);
         //der um inclination um den Vektor ascendingNode gedreht wird.
@@ -116,14 +129,15 @@ public class PlanetData : MonoBehaviour {
 
 
         //NEW
-        float startSpeed = Mathf.Sqrt((AttractionManager.SPEED * (bezugssystem.getMassSim() +  GetComponent<Attractor>().mass)) * ((2 / startingPoint.magnitude) - (1 / semiMajorAxisSim)));
+        float startSpeed = Mathf.Sqrt((AttractionManager.SPEED * (bezugssystem.getMassSim() + GetComponent<Attractor>().mass)) * ((2 / startingPoint.magnitude) - (1 / semiMajorAxisSim)));
         //Wegen error im Debug.Log
         if (!float.IsNaN(startSpeed))
         {
-            if(this.transform.position.z < 0)
+            if (this.transform.position.z < 0)
             {
                 rb.velocity = velocityDir.normalized * startSpeed;
-            } else
+            }
+            else
             {
                 rb.velocity = -velocityDir.normalized * startSpeed;
             }
@@ -133,6 +147,6 @@ public class PlanetData : MonoBehaviour {
 
     public float getMassSim()
     {
-        return  GetComponent<Attractor>().mass;
+        return GetComponent<Attractor>().mass;
     }
 }
