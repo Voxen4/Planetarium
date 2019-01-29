@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement: MonoBehaviour {
    
-    public float camZoomSpeed = 20f;
+    public float camZoomSpeed = 200f;
     public float camDragSpeed = 2f;
     private bool firstLookAround = false;
     private Vector2 rotation = new Vector2(0, 0);

@@ -8,6 +8,7 @@ public class PlanetData : MonoBehaviour {
     static float AE = 149597870700f;    //in km = 1 AE
     static float gravitationskonstante =6.67408f * Mathf.Pow(10, -11);
     static float vUmrechnung = Mathf.Sqrt(996461570) / 50;
+    public static float startSpeed;
     //Alle Public Attribute sind angaben die vom Benutzer eingegeben werden müssen.
     //Das System in dem sich der Planet befindet.
     //Ist wichtig um die initale Geschwindigkeit des Planeten zu berrechnen.
@@ -116,7 +117,7 @@ public class PlanetData : MonoBehaviour {
 
 
         //NEW
-        float startSpeed = Mathf.Sqrt((AttractionManager.SPEED * (bezugssystem.getMassSim() +  GetComponent<Attractor>().mass)) * ((2 / startingPoint.magnitude) - (1 / semiMajorAxisSim)));
+        startSpeed = Mathf.Sqrt(((float)AttractionManager.SPEED * (bezugssystem.getMassSim() +  GetComponent<Attractor>().mass)) * ((2 / startingPoint.magnitude) - (1 / semiMajorAxisSim)));
         //Wegen error im Debug.Log
         if (!float.IsNaN(startSpeed))
         {
