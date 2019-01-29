@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttractionManager : MonoBehaviour {
-    public static double SPEED = 0.1;//6.67408*Math.Pow(10, -11);
+    public static double SPEED = 0.0001;//6.67408*Math.Pow(10, -11);
     public double dt = 0.0000000000000000000001;
     public static List<Attractor> attractors;
 	// Use this for initialization
@@ -14,7 +14,7 @@ public class AttractionManager : MonoBehaviour {
 	}
     
 	// Update is called once per frame
-	void FixedUpdate () {
+	/*void FixedUpdate () {
 		foreach(Attractor attractor in attractors)
         {
             foreach(Attractor toAttract in attractors)
@@ -25,8 +25,8 @@ public class AttractionManager : MonoBehaviour {
                 }
             }
         }
-	}
-    /*
+	}*/
+    
     private void FixedUpdate()
     {
         setDiffEquations();
@@ -199,16 +199,5 @@ public class AttractionManager : MonoBehaviour {
             attractors[i].GetComponent<PlanetModel>().mass;
         }
     }
-
-    void BerechneEuler()
-    {
-        calculateAcceleration();
-        for (int i = 0; i < attractors.Count; i++)
-        {
-            attractors[i].GetComponent<PlanetModel>().position += attractors[i].GetComponent<PlanetModel>().velocity * dt;
-            attractors[i].GetComponent<PlanetModel>().velocity += attractors[i].GetComponent<PlanetModel>().acceleration * dt;
-        }
- 
-    }
-    */
+    
 }

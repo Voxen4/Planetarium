@@ -105,10 +105,6 @@ public class PlanetData : MonoBehaviour
 
         error = periapsis.magnitude - startingPoint.magnitude;
 
-    }
-
-    public void Start()
-    {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.mass = GetComponent<Attractor>().mass;
         /*float apoapsisSpeed = Mathf.Sqrt(AttractionManager.SPEED * bezugssystem.getMassSim() * ((2 / apoapsisHeightSim) - (1 / semiMajorAxisSim)));
@@ -130,7 +126,7 @@ public class PlanetData : MonoBehaviour
 
 
         //NEW
-        startSpeed = Mathf.Sqrt(((float)AttractionManager.SPEED * (bezugssystem.getMassSim() +  GetComponent<Attractor>().mass)) * ((2 / startingPoint.magnitude) - (1 / semiMajorAxisSim)));
+        startSpeed = Mathf.Sqrt(((float)AttractionManager.SPEED * (bezugssystem.getMassSim() + GetComponent<Attractor>().mass)) * ((2 / startingPoint.magnitude) - (1 / semiMajorAxisSim)));
         //Wegen error im Debug.Log
         if (!float.IsNaN(startSpeed))
         {
@@ -144,6 +140,12 @@ public class PlanetData : MonoBehaviour
             }
 
         }
+
+    }
+
+    public void Start()
+    {
+        
     }
 
     public float getMassSim()
