@@ -31,7 +31,6 @@ https://www.projectpluto.com/source.htm
 To-Do:
 - DOKU
 - Fehlerabschätzung mit mehreren Punkten
-- N-Körperproblem(Mond)(Sonne nicht mehr statisch), Erdenmond und vllt Mars und Venus Monde
 - Geschwindigkeit der Simulation von Frame auf Tick
 - Datumsanzeige während der Simulation
 - Startsposition(Energieerhaltungssatz)
