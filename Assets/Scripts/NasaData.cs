@@ -19,7 +19,7 @@ public class NasaData : MonoBehaviour
             string[] date = columns[1].Split('-');
             Parsed parsedLine = new Parsed()
             {
-                date = new Date() { _year = short.Parse(date[0]), month = short.Parse(date[1]), _day = short.Parse(date[2]) }
+                date = new Date(short.Parse(date[0]), short.Parse(date[1]), short.Parse(date[2]) )
                 ,
                 X = double.Parse(columns[2])
                 ,
@@ -39,16 +39,64 @@ public class NasaData : MonoBehaviour
 
     public class Date : IEqualityComparer<Date>
     {
-        public short _year = 1959, month = 1, _day = 1;
+        private short day;
+        private short year;
+        private short month;
+
+        public Date(short _year = 1959, short _month = 1, short _day = 1)
+        {
+            this.Year=_year;
+            this.Month = _month;
+            this.Day = _day;
+        }
+
+        public short Year
+        {
+            get
+            {
+                return year;
+            }
+
+            private set
+            {
+                year = value;
+            }
+        }
+
+        public short Month
+        {
+            get
+            {
+                return month;
+            }
+
+            private set
+            {
+                month = value;
+            }
+        }
+
+        public short Day
+        {
+            get
+            {
+                return day;
+            }
+
+            private set
+            {
+                day = value;
+            }
+        }
 
         public bool Equals(Date x, Date y)
         {
-            return x._year == y._year && x.month == y.month && x._day == y._day;
+            return x.Year == y.Year && x.Month == y.Month && x.Day == y.Day;
         }
 
         public int GetHashCode(Date obj)
         {
-            return obj._year.GetHashCode() +  obj.month.GetHashCode() + obj._day.GetHashCode();
+            return obj.Year.GetHashCode() ^  obj.Month.GetHashCode() ^ obj.Day.GetHashCode();
         }
     }
     public class Parsed

@@ -19,20 +19,23 @@ public class OptionsHandler : MonoBehaviour {
 	    
     public void yearDropValueChangedHandler(Dropdown yearDrop)
     {
-        date._year= (short)(1998+yearDrop.value);
+        short year = (short)(1998+yearDrop.value);
+        date = new NasaData.Date(year,date.Month,date.Day);
         GameMgr.instance.setDate(date);
     }
 
     
     public void monthDropValueChangedHandler(Dropdown monthDrop)
     {
-        date.month= (short)(monthDrop.value);
+        short month =  (short)(monthDrop.value);
+        date = new NasaData.Date(date.Year,month,date.Day);
         GameMgr.instance.setDate(date);
     }
 
     public void dayDropValueChangedHandler(Dropdown dayDrop)
     {
-        date._day= (short)(dayDrop.value+1);
+        short day = (short)(dayDrop.value+1);
+        date = new NasaData.Date(date.Year,date.Month,day);
         GameMgr.instance.setDate(date);
     }
 }
