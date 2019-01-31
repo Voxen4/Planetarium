@@ -18,6 +18,8 @@ https://nssdc.gsfc.nasa.gov/planetary/factsheet/planet_table_ratio.html
 
 Perihel/Apihel:
 https://de.wikipedia.org/wiki/Apsis_(Astronomie)
+FactSheet für Planeten:
+https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html
 
 
 
@@ -27,11 +29,9 @@ https://www.projectpluto.com/source.htm
 
 
 To-Do:
-
-- Umwandlung der Koordinanten in X und Y
-- Rotation der Planenten mit den Listen
-- Kalender für die einzelnen Tage aus den Listen
-- Umlaufbahn programmieren
-- Gravitation/Anziehskraft programmieren
-- Ticks auf die Jahre anpassen
-- TBC...
+- DOKU
+- Fehlerabschätzung mit mehreren Punkten
+- Geschwindigkeit der Simulation von Frame auf Tick
+- Datumsanzeige während der Simulation
+- Startsposition(Energieerhaltungssatz)
+- 

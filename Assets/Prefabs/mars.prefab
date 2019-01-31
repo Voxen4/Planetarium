@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 54227384528369760}
   - component: {fileID: 114035054226755902}
   - component: {fileID: 114231342618814034}
-  - component: {fileID: 114126318165839200}
   m_Layer: 0
   m_Name: mars
   m_TagString: Untagged
@@ -114,17 +113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b249e03a80341e049a3cb4d9d1f1a37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114126318165839200
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1824507976591256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd1fe72491eca6a41a9ba0a17c3c38c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  smoothSpeed: 0.125
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &114231342618814034
 MonoBehaviour:
   m_ObjectHideFlags: 1

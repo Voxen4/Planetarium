@@ -3,19 +3,19 @@ using UnityEditor;
 
 public class UIManager : MonoBehaviour
 {
-    public GameMgr GM;
-	void Start ()
-	{
 
-	}
+    void Start()
+    {
 
-    void Update ()
-	{
+    }
+
+    void Update()
+    {
         if (Input.GetKeyDown("escape"))
         {
-            GM.TogglePauseMenu();
+            GameMgr.instance.TogglePauseMenu();
         }
     }
-    
+
 
 }
