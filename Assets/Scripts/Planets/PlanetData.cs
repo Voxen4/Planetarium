@@ -88,17 +88,31 @@ public class PlanetData : MonoBehaviour
         //NEW
         //Das Zentrum der Ellipse befindet sich 1 * semiMajorAxis von der Periapsis entfernt in Richtung des Brennpunktes (also Sonne). Da Die Sonne sich bei 0/0/0 befindet, muss sie nicht aufgeschrieben werden.
         Vector3 ellipseCenter = periapsis - (periapsis.normalized * semiMajorAxis * (AE / distanceUmrechnung));
+        Vector3 apoapsis = ellipseCenter + (-ellipseCenter.normalized * semiMajorAxis * (AE / distanceUmrechnung));
+        Vector3 brennpunkt2 = apoapsis - periapsis;
+
 
         //Starting Point ist in AE angegeben und muss umgerechnet werden.
         startingPoint = startingPoint * (AE / distanceUmrechnung);
 
+        //Die richtung des Startmoments des Planeten ist Orthogonal zu der Winkelhalbierenden zwischen b1 und der startposition und b2 un der startpostion wobei b1 und b2 die Brennpunkte der Ellipose sind.
+        //b1 befindet sich bei 0/0/0 und b2 haben wir errechnet.
+        Vector3 brennpunkt2ToStartingPoint = startingPoint - brennpunkt2;
+        float angle = Vector3.Angle(startingPoint, brennpunkt2ToStartingPoint);
+        //Um die Mitteldiagonale zu bekommen drehen wir einfach den Vektor startingPoint um den halben Winkel.
+        Vector3 orthogonalToVelocity = Quaternion.AngleAxis(angle / 2, orthogonalToInclinationPlane) * startingPoint;
+        //Nun muss nur noch ein Orthogonaler Vektor zu diesem und dem Orthogonalen Vektor der Inclination Plane Gebildet werden.
+        velocityDir = new Vector3(orthogonalToInclinationPlane.y * orthogonalToVelocity.z - orthogonalToInclinationPlane.z * orthogonalToVelocity.y,
+                                  orthogonalToInclinationPlane.z * orthogonalToVelocity.x - orthogonalToInclinationPlane.x * orthogonalToVelocity.z,
+                                  orthogonalToInclinationPlane.x * orthogonalToVelocity.y - orthogonalToInclinationPlane.y * orthogonalToVelocity.x);
+
         //NUn muss ein Vektor konstruiert werden, der orthogonal zu dem vektor ellipseCenter - startingPoint liegt. Zudem muss der Vektor in der Ebene des Orbits liegen d.h.
         //auch orthogonal zu dem Normalenvektor der Ebene sein.
-        Vector3 centerToStartingPoint = startingPoint - ellipseCenter;
+        //ctor3 centerToStartingPoint = startingPoint - ellipseCenter;
         //der andere Vektor der die Ebene aufspannt ist orthogonalToInclinationPlane
-        velocityDir = new Vector3(orthogonalToInclinationPlane.y * centerToStartingPoint.z - orthogonalToInclinationPlane.z * centerToStartingPoint.y,
-                                          orthogonalToInclinationPlane.z * centerToStartingPoint.x - orthogonalToInclinationPlane.x * centerToStartingPoint.z,
-                                          orthogonalToInclinationPlane.x * centerToStartingPoint.y - orthogonalToInclinationPlane.y * centerToStartingPoint.x);
+        //locityDir = new Vector3(orthogonalToInclinationPlane.y * centerToStartingPoint.z - orthogonalToInclinationPlane.z * centerToStartingPoint.y,
+        //                                orthogonalToInclinationPlane.z * centerToStartingPoint.x - orthogonalToInclinationPlane.x * centerToStartingPoint.z,
+        //                                orthogonalToInclinationPlane.x * centerToStartingPoint.y - orthogonalToInclinationPlane.y * centerToStartingPoint.x);
 
 
         this.transform.position = startingPoint;
