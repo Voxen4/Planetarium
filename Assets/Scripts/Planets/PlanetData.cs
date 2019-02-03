@@ -146,11 +146,11 @@ public class PlanetData : MonoBehaviour
         {
             if (this.transform.position.z < 0)
             {
-                rb.velocity = velocityDir.normalized * startSpeed;
+                rb.velocity = -velocityDir.normalized * startSpeed;
             }
             else
             {
-                rb.velocity = -velocityDir.normalized * startSpeed;
+                rb.velocity = velocityDir.normalized * startSpeed;
             }
 
         }
