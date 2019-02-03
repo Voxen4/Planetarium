@@ -26,7 +26,7 @@ public class FollowPlanet : MonoBehaviour {
             clicked = false;
             manager.trackedPlanet = null;
         }
-        else if(!clicked)
+        else if(!clicked && manager.trackedPlanet == null)
         {
             manager.trackedPlanet = this.planet.gameObject;
             clicked = true;
