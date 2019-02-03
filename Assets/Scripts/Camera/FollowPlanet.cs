@@ -20,12 +20,17 @@ public class FollowPlanet : MonoBehaviour {
 
     public void ButtonAction()
     {
-        if (clicked)
+        UIManager manager = FindObjectOfType<UIManager>();
+        if (clicked && manager.trackedPlanet == this.planet.gameObject)
         {
             clicked = false;
+            manager.trackedPlanet = null;
         }
-            
-        else clicked = true;
+        else if(!clicked)
+        {
+            manager.trackedPlanet = this.planet.gameObject;
+            clicked = true;
+        }
     }
 
     void LateUpdate()

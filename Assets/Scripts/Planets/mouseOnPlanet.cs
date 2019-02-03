@@ -55,11 +55,11 @@ public class mouseOnPlanet : MonoBehaviour
     {
         if (currentToolTipText != "")
         {
-
+            currentToolTipText = text;// + '\n' + ay.ToString();
             var x = Event.current.mousePosition.x;
             var y = Event.current.mousePosition.y;
-            GUI.Label(new Rect(x - 148, y + 40, 300, 60), currentToolTipText, backStyle);
-            GUI.Label(new Rect(x - 150, y + 40, 300, 60), currentToolTipText, frontStyle);
+            GUI.Label(new Rect(x - 148, y + 40, 500, 60), currentToolTipText, backStyle);
+            GUI.Label(new Rect(x - 150, y + 40, 500, 60), currentToolTipText, frontStyle);
         }
     }
 }
