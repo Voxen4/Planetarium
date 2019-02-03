@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlanetData : MonoBehaviour
 {
     static public float masseUmrechnung = (float)5.9722f * Mathf.Pow(10, 24); //in kg, Masse Erde
-    static float distanceUmrechnung = 1000000000;    //in km, Entfernung Erde,Sonne
-    static float AE = 149597870700f;    //in km = 1 AE
-    static float gravitationskonstante = 6.67408f * Mathf.Pow(10, -11);
-    static float vUmrechnung = Mathf.Sqrt(996461570) / 50;
+    static public float distanceUmrechnung = 1000000000;    //in km, Entfernung Erde,Sonne
+    static public float AE = 149597870700f;    //in km = 1 AE
+    static public float gravitationskonstante = 6.67408f * Mathf.Pow(10, -11);
+    static public float vUmrechnung = Mathf.Sqrt(996461570) / 50;
     public static float startSpeed;
     //Alle Public Attribute sind angaben die vom Benutzer eingegeben werden müssen.
     //Das System in dem sich der Planet befindet.

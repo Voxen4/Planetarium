@@ -55,6 +55,7 @@ public class RelativeAttributesTo : MonoBehaviour
             FileWriter.AutoFlush = true;
         }
         RelativePos = RelativeTo.gameObject.transform.position - this.transform.position;
+        RelativePos /= (PlanetData.AE / PlanetData.distanceUmrechnung);
         RelativeVel = RelativeTo.GetComponent<Rigidbody>().velocity - this.GetComponent<Rigidbody>().velocity;
         StartTheta = Mathf.Asin(RelativePos.y / RelativePos.magnitude);
         StartPhi = Mathf.Atan2(RelativePos.z, RelativePos.x);
@@ -74,7 +75,9 @@ public class RelativeAttributesTo : MonoBehaviour
     void FixedUpdate()
     {
 
-        RelativePos = RelativeTo.gameObject.transform.position - this.transform.position;
+        //RelativePos = RelativeTo.gameObject.transform.position - this.transform.position;
+        //RelativePos = RelativePos * PlanetData.distanceUmrechnung / PlanetData.AE;
+        RelativePos = (RelativeTo.gameObject.transform.position - this.transform.position) * PlanetData.distanceUmrechnung / PlanetData.AE;
         RelativeVel = RelativeTo.GetComponent<Rigidbody>().velocity - this.GetComponent<Rigidbody>().velocity;
 
         CurrentDistance = RelativePos.magnitude;
@@ -117,7 +120,7 @@ public class RelativeAttributesTo : MonoBehaviour
             {
                 FileWriter = File.AppendText(fileName);
             }
-            string s = this.gameObject.name + " " + RelativePos.ToString() + "	" + RelativeVel.ToString() + "	" + ApoapsisHeight.ToString()
+            string s = this.gameObject.name + " " + RelativePos.ToString("F8") + "	" + RelativeVel.ToString() + "	" + ApoapsisHeight.ToString()
                 + "	" + PeriapsisHeight.ToString() + "	" + CurrentDistance.ToString() + "	" + StartTheta.ToString() + "	" + StartPhi.ToString() + "	" + currentTheta
                 + "	" + currentPhi.ToString() + "	" + maxDistanceAngleTheta.ToString() + "	" + maxDistanceAnglePhi.ToString() + "	" + minDistanceAngleTheta.ToString()
                 + "	" + minDistanceAnglePhi.ToString() + "	" + period.ToString() + "	" + spin.ToString() + "	" + lastPos.ToString() + "	" + lastPhi.ToString() + "	" + periodSum.ToString();
