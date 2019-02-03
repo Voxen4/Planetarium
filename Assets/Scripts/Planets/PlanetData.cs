@@ -56,7 +56,7 @@ public class PlanetData : MonoBehaviour
         NasaData nasaData = this.gameObject.GetComponent<NasaData>();
         if (nasaData != null)
         {
-            NasaData.Parsed parsed = nasaData.GetParsed(GameMgr.instance.getDate());
+            NasaData.Parsed parsed = nasaData.GetParsed(((GameMgr)GameMgr.Instance).getDate());
             if (parsed != null)
             {
                 startingPoint.x = (float)parsed.X;

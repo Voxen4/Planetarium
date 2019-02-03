@@ -36,4 +36,9 @@ public class PlanetModel : MonoBehaviour {
         Velocity = (Vector3)velocity;
 
     }
+
+    override public string ToString()
+    {
+        return string.Format("Position  (X:{0},Y:{1},Z:{2})\nVelocity  (X:{3},Y:{4},Z:{5})",this.position.x, this.position.y, this.position.z,this.velocity.x, this.velocity.y, this.velocity.z);
+    }
 }

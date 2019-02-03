@@ -14,14 +14,14 @@ public class OptionsHandler : MonoBehaviour {
 		dayDrop.onValueChanged.AddListener(delegate{dayDropValueChangedHandler(dayDrop); });
 		monthDrop.onValueChanged.AddListener(delegate{monthDropValueChangedHandler(monthDrop); });
 		yearDrop.onValueChanged.AddListener(delegate{yearDropValueChangedHandler(yearDrop); });
-        GameMgr.instance.setDate(new NasaData.Date());
+        ((GameMgr)GameMgr.Instance).setDate(new NasaData.Date());
 	}
 	    
     public void yearDropValueChangedHandler(Dropdown yearDrop)
     {
-        short year = (short)(1998+yearDrop.value);
+        short year = (short)(1959+yearDrop.value);
         date = new NasaData.Date(year,date.Month,date.Day);
-        GameMgr.instance.setDate(date);
+        ((GameMgr)GameMgr.Instance).setDate(date);
     }
 
     
@@ -29,13 +29,13 @@ public class OptionsHandler : MonoBehaviour {
     {
         short month =  (short)(monthDrop.value);
         date = new NasaData.Date(date.Year,month,date.Day);
-        GameMgr.instance.setDate(date);
+        ((GameMgr)GameMgr.Instance).setDate(date);
     }
 
     public void dayDropValueChangedHandler(Dropdown dayDrop)
     {
         short day = (short)(dayDrop.value+1);
         date = new NasaData.Date(date.Year,date.Month,day);
-        GameMgr.instance.setDate(date);
+        ((GameMgr)GameMgr.Instance).setDate(date);
     }
 }

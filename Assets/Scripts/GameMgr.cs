@@ -4,21 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class GameMgr : MonoBehaviour {
-    
-    public static GameMgr instance; 
+public class GameMgr : PersistentGameObjectSingleton<GameMgr>
+{
     private string nextScene;
     private NasaData.Date date; //Date Selected in Options or null then 01.01.1998
-    void Awake() 
-    { 
-        if (instance) { 
-            Destroy(gameObject);
-            } 
-        else 
-        { 
-            instance = this;
-        } 
-    }
+   
 	// Use this for initialization
 	void Start () {
     }
