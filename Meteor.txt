@@ -1,1 +1,0 @@
-RelativeTo	RelativePos	RelativeVel	ApoapsisHeight	PeriapsisHeight	CurrentDistance	StartTheta	StartPhi	currentTheta	currentPhi	maxDistanceAngleTheta	maxDistanceAnglePhi	minDistanceAngleTheta	minDistanceAnglePhi	period	spin	lastPos	lastPhi	periodSum

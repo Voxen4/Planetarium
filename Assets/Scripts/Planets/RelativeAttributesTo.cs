@@ -47,7 +47,7 @@ public class RelativeAttributesTo : MonoBehaviour
         {
             FileWriter = File.CreateText(fileName);
             FileWriter.AutoFlush = true;
-            FileWriter.WriteLine("RelativeTo	RelativePos	RelativeVel	ApoapsisHeight	PeriapsisHeight	CurrentDistance	StartTheta	StartPhi	currentTheta	currentPhi	maxDistanceAngleTheta	maxDistanceAnglePhi	minDistanceAngleTheta	minDistanceAnglePhi	period	spin	lastPos	lastPhi	periodSum");
+            FileWriter.WriteLine("RelativeTo\tRelativePos\tX\tY\tZ\tRelativeVel\tApoapsisHeight\tPeriapsisHeight\tCurrentDistance\tStartTheta\tStartPhi\tcurrentTheta\tcurrentPhi\tmaxDistanceAngleTheta\tmaxDistanceAnglePhi\tminDistanceAngleTheta\tminDistanceAnglePhi\tperiod\tspin\tlastPos\tlastPhi\tperiodSum");
         }
         else
         {
@@ -55,6 +55,7 @@ public class RelativeAttributesTo : MonoBehaviour
             FileWriter.AutoFlush = true;
         }
         RelativePos = RelativeTo.gameObject.transform.position - this.transform.position;
+
         RelativePos /= (PlanetData.AE / PlanetData.distanceUmrechnung);
         RelativeVel = RelativeTo.GetComponent<Rigidbody>().velocity - this.GetComponent<Rigidbody>().velocity;
         StartTheta = Mathf.Asin(RelativePos.y / RelativePos.magnitude);
@@ -79,6 +80,7 @@ public class RelativeAttributesTo : MonoBehaviour
         //RelativePos = RelativePos * PlanetData.distanceUmrechnung / PlanetData.AE;
         RelativePos = (RelativeTo.gameObject.transform.position - this.transform.position) * PlanetData.distanceUmrechnung / PlanetData.AE;
         RelativeVel = RelativeTo.GetComponent<Rigidbody>().velocity - this.GetComponent<Rigidbody>().velocity;
+        
 
         CurrentDistance = RelativePos.magnitude;
 
@@ -120,10 +122,11 @@ public class RelativeAttributesTo : MonoBehaviour
             {
                 FileWriter = File.AppendText(fileName);
             }
-            string s = this.gameObject.name + " " + RelativePos.ToString("F8") + "	" + RelativeVel.ToString() + "	" + ApoapsisHeight.ToString()
-                + "	" + PeriapsisHeight.ToString() + "	" + CurrentDistance.ToString() + "	" + StartTheta.ToString() + "	" + StartPhi.ToString() + "	" + currentTheta
-                + "	" + currentPhi.ToString() + "	" + maxDistanceAngleTheta.ToString() + "	" + maxDistanceAnglePhi.ToString() + "	" + minDistanceAngleTheta.ToString()
-                + "	" + minDistanceAnglePhi.ToString() + "	" + period.ToString() + "	" + spin.ToString() + "	" + lastPos.ToString() + "	" + lastPhi.ToString() + "	" + periodSum.ToString();
+            string s = this.gameObject.name + "\t" + RelativePos.ToString("F8") + "\t" + RelativePos.x.ToString() + "\t" + RelativePos.y.ToString() + "\t" + RelativePos.z.ToString()
+                + "\t" + RelativeVel.ToString() + "\t" + ApoapsisHeight.ToString()
+                + "\t" + PeriapsisHeight.ToString() + "\t" + CurrentDistance.ToString() + "\t" + StartTheta.ToString() + "	" + StartPhi.ToString() + "	" + currentTheta
+                + "\t" + currentPhi.ToString() + "\t" + maxDistanceAngleTheta.ToString() + "\t" + maxDistanceAnglePhi.ToString() + "\t" + minDistanceAngleTheta.ToString()
+                + "\t" + minDistanceAnglePhi.ToString() + "\t" + period.ToString() + "\t" + spin.ToString() + "\t" + lastPos.ToString() + "\t" + lastPhi.ToString() + "\t" + periodSum.ToString();
             FileWriter.WriteLine(s);
             //return s;
         }
