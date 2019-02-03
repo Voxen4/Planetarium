@@ -1,9 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
 
-public class RelativeAttributesTo : MonoBehaviour {
+public class RelativeAttributesTo : MonoBehaviour
+{
+
+    private float tagecounter = 0;
+    private float tickDays = 0.183272672F;
+
     public PlanetData relativeTo;
 
     private Vector3 relativePos;
@@ -28,7 +31,7 @@ public class RelativeAttributesTo : MonoBehaviour {
 
     private float period;
     private float spin;
-    
+
     private float lastPos;
     private float lastPhi;
     private float periodSum;
@@ -37,8 +40,9 @@ public class RelativeAttributesTo : MonoBehaviour {
     private StreamWriter FileWriter;
 
     // Use this for initialization
-    void Start () {
-        fileName = this.gameObject.name + ".txt"; 
+    void Start()
+    {
+        fileName = this.gameObject.name + ".txt";
         if (!File.Exists(fileName))
         {
             FileWriter = File.CreateText(fileName);
@@ -47,7 +51,7 @@ public class RelativeAttributesTo : MonoBehaviour {
         }
         else
         {
-             FileWriter = File.AppendText(fileName);
+            FileWriter = File.AppendText(fileName);
             FileWriter.AutoFlush = true;
         }
         RelativePos = RelativeTo.gameObject.transform.position - this.transform.position;
@@ -67,7 +71,9 @@ public class RelativeAttributesTo : MonoBehaviour {
 
 
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate()
+    {
+
         RelativePos = RelativeTo.gameObject.transform.position - this.transform.position;
         RelativeVel = RelativeTo.GetComponent<Rigidbody>().velocity - this.GetComponent<Rigidbody>().velocity;
 
@@ -96,25 +102,32 @@ public class RelativeAttributesTo : MonoBehaviour {
             PeriodSum = 0;
         }
 
-            LastPhi = CurrentPhi;
+        LastPhi = CurrentPhi;
+
+        tagecounter += tickDays;
+
     }
-    string PrintValues()
+    void PrintValues()
     {
-        
-        if(FileWriter == null)
+
+        if ((tagecounter > (1 - (tickDays / 2))) && tagecounter < (1 + (tickDays / 2)))
         {
-             FileWriter = File.AppendText(fileName);
+            tagecounter -= 1;
+            if (FileWriter == null)
+            {
+                FileWriter = File.AppendText(fileName);
+            }
+            string s = this.gameObject.name + " " + RelativePos.ToString() + "	" + RelativeVel.ToString() + "	" + ApoapsisHeight.ToString()
+                + "	" + PeriapsisHeight.ToString() + "	" + CurrentDistance.ToString() + "	" + StartTheta.ToString() + "	" + StartPhi.ToString() + "	" + currentTheta
+                + "	" + currentPhi.ToString() + "	" + maxDistanceAngleTheta.ToString() + "	" + maxDistanceAnglePhi.ToString() + "	" + minDistanceAngleTheta.ToString()
+                + "	" + minDistanceAnglePhi.ToString() + "	" + period.ToString() + "	" + spin.ToString() + "	" + lastPos.ToString() + "	" + lastPhi.ToString() + "	" + periodSum.ToString();
+            FileWriter.WriteLine(s);
+            //return s;
         }
-        string s =  this.gameObject.name + " " +  RelativePos.ToString() + "	" +  RelativeVel.ToString()+ "	" +  ApoapsisHeight.ToString()
-            + "	" +  PeriapsisHeight.ToString()+ "	" +  CurrentDistance.ToString()+ "	" +  StartTheta.ToString()+ "	" +  StartPhi.ToString()+ "	" +  currentTheta
-            + "	" +  currentPhi.ToString()+ "	" +  maxDistanceAngleTheta.ToString()+ "	" +   maxDistanceAnglePhi.ToString()+ "	" +  minDistanceAngleTheta.ToString()
-            + "	" +  minDistanceAnglePhi.ToString()+ "	" +  period.ToString()+ "	" +  spin.ToString()+ "	" +  lastPos.ToString()+ "	" +  lastPhi.ToString()+ "	" +  periodSum.ToString();
-                FileWriter.WriteLine(s);
-        return s; 
-        
+
     }
 
-        public PlanetData RelativeTo
+    public PlanetData RelativeTo
     {
         get
         {
@@ -124,7 +137,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             relativeTo = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -138,7 +152,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             relativePos = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -152,7 +167,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             relativeVel = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -166,7 +182,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             apoapsisHeight = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -180,7 +197,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             periapsisHeight = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -194,7 +212,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             currentDistance = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -208,7 +227,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             startTheta = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -222,7 +242,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             startPhi = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -236,7 +257,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             currentTheta = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -250,7 +272,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             currentPhi = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -264,7 +287,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             maxDistanceAngleTheta = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -278,7 +302,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             maxDistanceAnglePhi = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -292,7 +317,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             minDistanceAngleTheta = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -306,7 +332,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             minDistanceAnglePhi = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -320,7 +347,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             period = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -334,7 +362,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             spin = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -348,7 +377,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             lastPos = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -362,7 +392,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             lastPhi = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 
@@ -376,7 +407,8 @@ public class RelativeAttributesTo : MonoBehaviour {
         set
         {
             periodSum = value;
-            Debug.Log(PrintValues());
+            PrintValues();
+            //Debug.Log(PrintValues());
         }
     }
 }
