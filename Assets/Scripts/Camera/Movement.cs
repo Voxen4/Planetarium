@@ -1,50 +1,57 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement: MonoBehaviour {
+public class Movement : MonoBehaviour
+{
    
+    public float movementSpeed = 0.2f;
+
+    public float lookAroundSensitivity = 3f;
+    
     public float camZoomSpeed = 200f;
-    public float camDragSpeed = 2f;
-    private bool firstLookAround = false;
-    private Vector2 rotation = new Vector2(0, 0);
-    public float rotationSpeed = 3;
-    public static bool cammed;
-
-    private void Start()
+    
+    void Update()
     {
-        cammed = false;
-    }
 
-    private void Update()
-    {
-        
-        //Scroll the MouseWheel to zoom
+        // Mouse Zoom
         transform.Translate(0, 0, Input.GetAxis("Mouse ScrollWheel") * camZoomSpeed, Space.Self);
 
-        //Press the middle MouseButton to drag the cam
-        if (Input.GetMouseButton(2))
+        // Zoom in with 'W'
+        if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(-Input.GetAxisRaw("Mouse X")  * camDragSpeed, -Input.GetAxisRaw("Mouse Y") * camDragSpeed, 0);
+            transform.position = transform.position + (transform.forward * movementSpeed);
+        }
+
+        // Move left with 'A'
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position = transform.position + (-transform.right * movementSpeed);
+        }
+
+        // Zoom out with 'S'
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position = transform.position + (-transform.forward * movementSpeed);
+        }
+
+        // Move right with 'D'
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position = transform.position + (transform.right * movementSpeed);
+        }
+
+        // Look around with Right Mouse
+        if (Input.GetMouseButton(1))
+        {
+            float newRotationX = transform.eulerAngles.y + Input.GetAxis("Mouse X") * lookAroundSensitivity;
+            float newRotationY = transform.eulerAngles.x - Input.GetAxis("Mouse Y") * lookAroundSensitivity;
+            transform.localEulerAngles = new Vector3(newRotationY, newRotationX, 0f);
             
         } 
 
-        //Hold the right MouseButton to look around
-        if (Input.GetMouseButton(1))
-        {
-            if (!firstLookAround)
-            {
-                rotation.x = -90;
-                firstLookAround = true;
-            } else
-            {
-            rotation.y += Input.GetAxis("Mouse X");
-            rotation.x -= Input.GetAxis("Mouse Y");
-            transform.eulerAngles = (Vector2)rotation * rotationSpeed;
-            }
-           
-        }
+
+
     }
-
-
+    
 }
