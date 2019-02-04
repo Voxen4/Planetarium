@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameMgr : PersistentGameObjectSingleton<GameMgr>
 {
     private string nextScene;
-    private NasaData.Date date; //Date Selected in Options or null then 01.01.1998
+    private NasaData.Date date = new NasaData.Date(); //Date Selected in Options or null then 01.01.1998
    
 	// Use this for initialization
 	void Start () {

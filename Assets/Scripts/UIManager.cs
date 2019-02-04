@@ -5,6 +5,8 @@ public class UIManager : MonoBehaviour
 {
     public GameObject trackedPlanet;
     public GameObject planetDataTable;
+    public GameObject dateDisplayObject;
+    public int tageCounter;
     void Start()
     {
 
@@ -20,7 +22,8 @@ public class UIManager : MonoBehaviour
 
     void OnGUI()
     {
-        if(planetDataTable != null && trackedPlanet != null)
+        var customDate = ((GameMgr)GameMgr.Instance).getDate();
+        if (planetDataTable != null && trackedPlanet != null)
         {
             var planet = trackedPlanet.GetComponent<PlanetModel>();
             var position = planetDataTable.transform.Find("Position").GetComponent<UnityEngine.UI.Text>();
@@ -34,6 +37,14 @@ public class UIManager : MonoBehaviour
             position.text = "";
             var velocity = planetDataTable.transform.Find("Velocity").GetComponent<UnityEngine.UI.Text>();
             velocity.text = "";
+        }
+        if (dateDisplayObject != null && customDate != null)
+        {
+            var dateObject = dateDisplayObject.transform.Find("Date").GetComponent<UnityEngine.UI.Text>();
+            var date = new System.DateTime(customDate.Year, customDate.Month, customDate.Day);
+
+            if(tageCounter > 0)date = date.AddDays(tageCounter);
+            dateObject.text = date.ToString("MM/dd/yyyy");
         }
       //  planetDataTable.
     }
