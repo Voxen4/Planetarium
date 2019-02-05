@@ -78,7 +78,7 @@ public class RelativeAttributesTo : MonoBehaviour
 
         //RelativePos = RelativeTo.gameObject.transform.position - this.transform.position;
         //RelativePos = RelativePos * PlanetData.distanceUmrechnung / PlanetData.AE;
-        RelativePos = (RelativeTo.gameObject.transform.position - this.transform.position) * PlanetData.distanceUmrechnung / PlanetData.AE;
+        RelativePos = (this.transform.position - RelativeTo.gameObject.transform.position) * PlanetData.distanceUmrechnung / PlanetData.AE;
         RelativeVel = RelativeTo.GetComponent<Rigidbody>().velocity - this.GetComponent<Rigidbody>().velocity;
         
 

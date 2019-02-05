@@ -59,6 +59,7 @@ public class PlanetData : MonoBehaviour
             NasaData.Parsed parsed = nasaData.GetParsed(((GameMgr)GameMgr.Instance).getDate());
             if (parsed != null)
             {
+                Debug.Log(this.name + ": " + (float)parsed.X + "," + (float)parsed.Y + ","+ (float)parsed.Z);
                 startingPoint.x = (float)parsed.X;
                 startingPoint.y = (float)parsed.Y;
                 startingPoint.z = (float)parsed.Z;
@@ -116,6 +117,9 @@ public class PlanetData : MonoBehaviour
 
 
         this.transform.position = startingPoint;
+        Debug.Log(this.name);
+        Debug.Log(this.transform.position.ToString("F4"));
+        Debug.Log((this.transform.position * PlanetData.distanceUmrechnung / PlanetData.AE).ToString("F4"));
 
         error = periapsis.magnitude - startingPoint.magnitude;
 
