@@ -24,14 +24,3 @@ https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html
 
 
 https://www.projectpluto.com/source.htm
-
-
-
-
-To-Do:
-- DOKU
-- Fehlerabschätzung mit mehreren Punkten
-- Geschwindigkeit der Simulation von Frame auf Tick
-- Datumsanzeige während der Simulation
-- Startsposition(Energieerhaltungssatz)
-- 
