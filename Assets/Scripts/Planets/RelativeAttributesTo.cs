@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RelativeAttributesTo : MonoBehaviour
 {
-
+    public UIManager manager;
     private float tagecounter = 0;
     private float tickDays = 0.183272672F;
 
@@ -109,15 +109,19 @@ public class RelativeAttributesTo : MonoBehaviour
 
         LastPhi = CurrentPhi;
 
-        tagecounter += tickDays;
+        Tagecounter += tickDays;
 
     }
     void PrintValues()
     {
 
-        if ((tagecounter > (1 - (tickDays / 2))) && tagecounter < (1 + (tickDays / 2)))
+        if ((Tagecounter > (1 - (tickDays / 2))) && Tagecounter < (1 + (tickDays / 2)))
         {
-            tagecounter -= 1;
+            if(this.gameObject.name == "earth")
+            {
+                manager.tageCounter++;
+            }
+            Tagecounter -= 1;
             if (FileWriter == null)
             {
                 FileWriter = File.AppendText(fileName);
@@ -415,6 +419,19 @@ public class RelativeAttributesTo : MonoBehaviour
             periodSum = value;
             PrintValues();
             //Debug.Log(PrintValues());
+        }
+    }
+
+    public float Tagecounter
+    {
+        get
+        {
+            return tagecounter;
+        }
+
+        set
+        {
+            tagecounter = value;
         }
     }
 }

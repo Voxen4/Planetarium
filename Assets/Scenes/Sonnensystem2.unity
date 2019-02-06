@@ -458,6 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b68ec69aafaf8841a49542e4e0a10fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1793233868}
   relativeTo: {fileID: 469290833}
 --- !u!114 &72615455
 MonoBehaviour:
@@ -875,6 +876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b68ec69aafaf8841a49542e4e0a10fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1793233868}
   relativeTo: {fileID: 469290833}
 --- !u!114 &157913022
 MonoBehaviour:
@@ -1557,6 +1559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b68ec69aafaf8841a49542e4e0a10fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1793233868}
   relativeTo: {fileID: 469290833}
 --- !u!114 &669436780
 MonoBehaviour:
@@ -2191,6 +2194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b68ec69aafaf8841a49542e4e0a10fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
   relativeTo: {fileID: 0}
 --- !u!96 &871252914
 TrailRenderer:
@@ -2660,6 +2664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b68ec69aafaf8841a49542e4e0a10fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1793233868}
   relativeTo: {fileID: 469290833}
 --- !u!114 &978660637
 MonoBehaviour:
@@ -4011,7 +4016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80, y: 116}
+  m_AnchoredPosition: {x: 100, y: 12.5}
   m_SizeDelta: {x: 200, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1552190859
@@ -4217,6 +4222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b68ec69aafaf8841a49542e4e0a10fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1793233868}
   relativeTo: {fileID: 469290833}
 --- !u!114 &1572404958
 MonoBehaviour:
@@ -4682,7 +4688,7 @@ MonoBehaviour:
   trackedPlanet: {fileID: 0}
   planetDataTable: {fileID: 1065119762}
   dateDisplayObject: {fileID: 1552190857}
-  tageCounter: 1
+  tageCounter: 0
 --- !u!4 &1793233869
 Transform:
   m_ObjectHideFlags: 0
@@ -4967,6 +4973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b68ec69aafaf8841a49542e4e0a10fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1793233868}
   relativeTo: {fileID: 469290833}
 --- !u!96 &1911156291
 TrailRenderer:
@@ -5123,6 +5130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b68ec69aafaf8841a49542e4e0a10fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1793233868}
   relativeTo: {fileID: 469290833}
 --- !u!114 &1923821556
 MonoBehaviour:
@@ -5516,6 +5524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b68ec69aafaf8841a49542e4e0a10fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1793233868}
   relativeTo: {fileID: 469290833}
 --- !u!114 &1984083169
 MonoBehaviour:
