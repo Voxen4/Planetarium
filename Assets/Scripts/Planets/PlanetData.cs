@@ -59,7 +59,7 @@ public class PlanetData : MonoBehaviour
             NasaData.Parsed parsed = nasaData.GetParsed(((GameMgr)GameMgr.Instance).getDate());
             if (parsed != null)
             {
-                Debug.Log(this.name + ": " + (float)parsed.X + "," + (float)parsed.Y + ","+ (float)parsed.Z);
+                //Debug.Log(this.name + ": " + (float)parsed.X + "," + (float)parsed.Y + ","+ (float)parsed.Z);
                 startingPoint.x = (float)parsed.X;
                 startingPoint.y = (float)parsed.Y;
                 startingPoint.z = (float)parsed.Z;
@@ -90,7 +90,15 @@ public class PlanetData : MonoBehaviour
         //Das Zentrum der Ellipse befindet sich 1 * semiMajorAxis von der Periapsis entfernt in Richtung des Brennpunktes (also Sonne). Da Die Sonne sich bei 0/0/0 befindet, muss sie nicht aufgeschrieben werden.
         Vector3 ellipseCenter = periapsis - (periapsis.normalized * semiMajorAxis * (AE / distanceUmrechnung));
         Vector3 apoapsis = ellipseCenter + (-ellipseCenter.normalized * semiMajorAxis * (AE / distanceUmrechnung));
-        Vector3 brennpunkt2 = apoapsis - periapsis;
+        apoapsis = ellipseCenter - (periapsis - ellipseCenter);
+        Vector3 brennpunkt2 = ellipseCenter.normalized * excentricity * semiMajorAxisSim;
+
+        //Debug.Log(periapsis.normalized);
+        //Debug.Log(ellipseCenter.normalized);
+        //Debug.Log(brennpunkt2.normalized);
+        //Debug.Log(brennpunkt2);
+        //Debug.Log(apoapsis.normalized);
+
 
 
         //Starting Point ist in AE angegeben und muss umgerechnet werden.
@@ -99,13 +107,18 @@ public class PlanetData : MonoBehaviour
         //Die richtung des Startmoments des Planeten ist Orthogonal zu der Winkelhalbierenden zwischen b1 und der startposition und b2 un der startpostion wobei b1 und b2 die Brennpunkte der Ellipose sind.
         //b1 befindet sich bei 0/0/0 und b2 haben wir errechnet.
         Vector3 brennpunkt2ToStartingPoint = startingPoint - brennpunkt2;
-        float angle = Vector3.Angle(startingPoint, brennpunkt2ToStartingPoint);
+        float angle = Vector3.Angle(brennpunkt2ToStartingPoint, startingPoint);
+
+        float angleA = Vector3.Angle(brennpunkt2ToStartingPoint, new Vector3(1,0,0));
+        float angleB = Vector3.Angle(startingPoint, new Vector3(1,0,0));
         //Um die Mitteldiagonale zu bekommen drehen wir einfach den Vektor startingPoint um den halben Winkel.
-        Vector3 orthogonalToVelocity = Quaternion.AngleAxis(angle / 2, orthogonalToInclinationPlane) * startingPoint;
+        Vector3 orthogonalToVelocity = Quaternion.AngleAxis((angleB - angleA) / 2, orthogonalToInclinationPlane) * startingPoint;
         //Nun muss nur noch ein Orthogonaler Vektor zu diesem und dem Orthogonalen Vektor der Inclination Plane Gebildet werden.
         velocityDir = new Vector3(orthogonalToInclinationPlane.y * orthogonalToVelocity.z - orthogonalToInclinationPlane.z * orthogonalToVelocity.y,
                                   orthogonalToInclinationPlane.z * orthogonalToVelocity.x - orthogonalToInclinationPlane.x * orthogonalToVelocity.z,
                                   orthogonalToInclinationPlane.x * orthogonalToVelocity.y - orthogonalToInclinationPlane.y * orthogonalToVelocity.x);
+
+
 
         //NUn muss ein Vektor konstruiert werden, der orthogonal zu dem vektor ellipseCenter - startingPoint liegt. Zudem muss der Vektor in der Ebene des Orbits liegen d.h.
         //auch orthogonal zu dem Normalenvektor der Ebene sein.
@@ -117,9 +130,6 @@ public class PlanetData : MonoBehaviour
 
 
         this.transform.position = startingPoint;
-        Debug.Log(this.name);
-        Debug.Log(this.transform.position.ToString("F4"));
-        Debug.Log((this.transform.position * PlanetData.distanceUmrechnung / PlanetData.AE).ToString("F4"));
 
         error = periapsis.magnitude - startingPoint.magnitude;
 
@@ -148,15 +158,7 @@ public class PlanetData : MonoBehaviour
         //Wegen error im Debug.Log
         if (!float.IsNaN(startSpeed))
         {
-            if (this.transform.position.z < 0)
-            {
-                rb.velocity = -velocityDir.normalized * startSpeed;
-            }
-            else
-            {
-                rb.velocity = velocityDir.normalized * startSpeed;
-            }
-
+            rb.velocity = velocityDir.normalized * startSpeed;
         }
 
     }

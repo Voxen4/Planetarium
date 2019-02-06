@@ -108,9 +108,9 @@ public class NasaData : MonoBehaviour
         if (parsedPositions.ContainsKey(date.Year))
         {
 
-            return null;
-            //parsedPositions.TryGetValue(date.Year, out parsedValue);
-            //return parsedValue;
+            //return null;
+            parsedPositions.TryGetValue(date.Year, out parsedValue);
+            return parsedValue;
         }
         else
         {
