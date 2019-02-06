@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExitButtonHandler : MonoBehaviour
+public class StartExitButtonHandler : MonoBehaviour
 {
-
     public void ExitButton()
     {
         Application.Quit();
+    }
+
+    public void StartButton()
+    {
+        ((GameMgr)GameMgr.Instance).TogglePauseMenu();
     }
 }
