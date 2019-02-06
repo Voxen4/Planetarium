@@ -24,9 +24,9 @@ public class NasaData : MonoBehaviour
                     ,
                     X = double.Parse(columns[2])
                     ,
-                    Y = double.Parse(columns[3])
+                    Z = double.Parse(columns[3])
                     ,
-                    Z = double.Parse(columns[4])
+                    Y = double.Parse(columns[4])
                     ,
                     VX = double.Parse(columns[5])
                     ,
