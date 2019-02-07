@@ -8,7 +8,6 @@ public class PlanetData : MonoBehaviour
     static public float distanceUmrechnung = 1000000000;    //in km, Entfernung Erde,Sonne
     static public float AE = 149597870700f;    //in km = 1 AE
     static public float gravitationskonstante = 6.67408f * Mathf.Pow(10, -11);
-    static public float vUmrechnung = Mathf.Sqrt(996461570) / 50;
     public static float startSpeed;
     //Alle Public Attribute sind angaben die vom Benutzer eingegeben werden müssen.
     //Das System in dem sich der Planet befindet.
@@ -29,30 +28,13 @@ public class PlanetData : MonoBehaviour
     //Starting Point in AU. Daten von NASA Horizon
     public Vector3 startingPoint;
 
-    private Vector3 velocityDir;
-
-    //DEBUG
-    public float error;
-
-    //Private Attribute sind umgerechnete public Attribute. Mit diese wird später gerechnet
-    private float apoapsisHeightSim;
-    private float periapsisHeightSim;
-    private float semiMajorAxisSim;
-    //private float massSim;
-
-    private Vector3 periapsis;
-    private Vector3 ascendingNode;
-
     /*
      *Die Awake Methode wird benutzt um alle Attribute (außer Velocity) des Planeten in die Simulationsdaten umzurechnen.
      * Sie wird vor der Start Methode aufgerufen.
      */
     public void Awake()
     {
-        apoapsisHeightSim = semiMajorAxis * (1 + excentricity) * (AE / distanceUmrechnung);
-        periapsisHeightSim = semiMajorAxis * (1 - excentricity) * (AE / distanceUmrechnung);
-        semiMajorAxisSim = semiMajorAxis * (AE / distanceUmrechnung);
-        Attractor attractor = this.gameObject.GetComponent<Attractor>();
+        float semiMajorAxisSim = semiMajorAxis * (AE / distanceUmrechnung);
         NasaData nasaData = this.gameObject.GetComponent<NasaData>();
         if (nasaData != null)
         {
@@ -65,107 +47,45 @@ public class PlanetData : MonoBehaviour
                 startingPoint.z = (float)parsed.Z;
             }
         }
-
-        //massSim = attractor.mass / masseUmrechnung;
-        //argumentOfPeriapsis += 180;
-        //this.transform.position = new Vector3(Mathf.Cos(inclination / 180f * Mathf.PI) * aphelHeightSim, Mathf.Sin(inclination / 180f * Mathf.PI) * aphelHeightSim, this.transform.position.z);
-
-        //Bestimmen der Ascending Node. Die AscendingNode befindet sich auf der XZ ebene mit einem Winkel longitude Of Ascending Node von einem festen Bezugspunkt
-        //Quaternion ist eine Drehung von longitudeOfAscendingNode Grad im den Vektor (0,1,0) (Y-Achse) des Vektors (1,0,0) mit der länge aphelHeightSim;
-        ascendingNode = Quaternion.AngleAxis(longitudeOfAscendingNode, new Vector3(0, 1, 0)) * new Vector3(1, 0, 0) * periapsisHeightSim;
-        //Vektor der auf der Bahnebene des Planeten Liegt. Er ist orthogonal zu ascendingNode.
-        Vector3 ascendingPlanePoint = new Vector3(-ascendingNode.z / ascendingNode.x, 0, 1);
-        //der um inclination um den Vektor ascendingNode gedreht wird.
-        ascendingPlanePoint = Quaternion.AngleAxis(inclination, ascendingNode) * ascendingPlanePoint;
-        //Bestimmung eines Orthogonalen Vektors zu der Ebene die von ascendingNode und ascendingPlanePoint aufgespannt wird.
-        Vector3 orthogonalToInclinationPlane = new Vector3(ascendingNode.y * ascendingPlanePoint.z - ascendingNode.z * ascendingPlanePoint.y,
-                                                           ascendingNode.z * ascendingPlanePoint.x - ascendingNode.x * ascendingPlanePoint.z,
-                                                           ascendingNode.x * ascendingPlanePoint.y - ascendingNode.y * ascendingPlanePoint.x);
-        //Drehung des Punktes ascendingNode um den Winkel argumentOfPeriapsis um die Axe orthogonalToInclinationPlane. Hier befindet sich die Periapsis des Punktes
-        //in unserem Fall die Apoapsis weil diese 180° von der periapsis entfernt ist und wir argumentOfPeriapsis += 180 rechenen.
-        periapsis = Quaternion.AngleAxis(longitudeOfPeriapsis, orthogonalToInclinationPlane) * ascendingNode;
-        this.transform.position = periapsis;
-
-        //NEW
-        //Das Zentrum der Ellipse befindet sich 1 * semiMajorAxis von der Periapsis entfernt in Richtung des Brennpunktes (also Sonne). Da Die Sonne sich bei 0/0/0 befindet, muss sie nicht aufgeschrieben werden.
-        Vector3 ellipseCenter = periapsis - (periapsis.normalized * semiMajorAxis * (AE / distanceUmrechnung));
-        Vector3 apoapsis = ellipseCenter + (-ellipseCenter.normalized * semiMajorAxis * (AE / distanceUmrechnung));
-        apoapsis = ellipseCenter - (periapsis - ellipseCenter);
-        Vector3 brennpunkt2 = ellipseCenter.normalized * excentricity * semiMajorAxisSim;
-
-        //Debug.Log(periapsis.normalized);
-        //Debug.Log(ellipseCenter.normalized);
-        //Debug.Log(brennpunkt2.normalized);
-        //Debug.Log(brennpunkt2);
-        //Debug.Log(apoapsis.normalized);
-
-
-
-        //Starting Point ist in AE angegeben und muss umgerechnet werden.
         startingPoint = startingPoint * (AE / distanceUmrechnung);
+        //Berechnung einer Ebene die die Schnittgrade ascendingNodeDir und einen Winkel inclination mit der Referenzebene hat.
+        Vector3 ascendingNodeDir = Quaternion.AngleAxis(longitudeOfAscendingNode,Vector3.up) * Vector3.right;
+        Vector3 inclinationPoint = Quaternion.AngleAxis(90, Vector3.up) * ascendingNodeDir;
+        inclinationPoint = Quaternion.AngleAxis(inclination, ascendingNodeDir) * inclinationPoint;
+        Vector3 orthogonalToPlane = new Vector3(ascendingNodeDir.y * inclinationPoint.z - ascendingNodeDir.z * inclinationPoint.y,
+                                                   ascendingNodeDir.z * inclinationPoint.x - ascendingNodeDir.x * inclinationPoint.z,
+                                                   ascendingNodeDir.x * inclinationPoint.y - ascendingNodeDir.y * inclinationPoint.x);
 
-        //Die richtung des Startmoments des Planeten ist Orthogonal zu der Winkelhalbierenden zwischen b1 und der startposition und b2 un der startpostion wobei b1 und b2 die Brennpunkte der Ellipose sind.
-        //b1 befindet sich bei 0/0/0 und b2 haben wir errechnet.
-        Vector3 brennpunkt2ToStartingPoint = startingPoint - brennpunkt2;
-        float angle = Vector3.Angle(brennpunkt2ToStartingPoint, startingPoint);
+        //Die Periapsis die sich auf der Major-Axis der Ellipse befindet, wird durch den Winkel longitudeOfPeriapsis angegeben.
+        //Dieser beschreibt den eingeschlossenen Winkel zwischen ascendingNodeDir und der Richtung der Periapsis
+        //Also drehen wir einfach den Vector ascendingNodeDir um den Winkel longitudeOfPeriapsis um den Normalenvektor der Ebene.
+        Vector3 periapsisDir = Quaternion.AngleAxis(longitudeOfPeriapsis, orthogonalToPlane) * ascendingNodeDir;
+        //Da sich der Brennpunkt 1 im Ursprung befindet können wir einfach das Zentrum der Ellipse und den zweiten Brennpunkt berechnen.
+        //Periapsis, Ursprung, Zentrum der Ellipse und der zweite Brennpunkt befindet sich alle auf einer Graden.
+        Vector3 ellipseCenter = -periapsisDir.normalized * excentricity * semiMajorAxisSim;
+        Vector3 focus2 = ellipseCenter + -periapsisDir.normalized * excentricity * semiMajorAxis;
 
-        float angleA = Vector3.Angle(brennpunkt2ToStartingPoint, new Vector3(1,0,0));
-        float angleB = Vector3.Angle(startingPoint, new Vector3(1,0,0));
-        //Um die Mitteldiagonale zu bekommen drehen wir einfach den Vektor startingPoint um den halben Winkel.
-        Vector3 orthogonalToVelocity = Quaternion.AngleAxis((angleB - angleA) / 2, orthogonalToInclinationPlane) * startingPoint;
-        //Nun muss nur noch ein Orthogonaler Vektor zu diesem und dem Orthogonalen Vektor der Inclination Plane Gebildet werden.
-        velocityDir = new Vector3(orthogonalToInclinationPlane.y * orthogonalToVelocity.z - orthogonalToInclinationPlane.z * orthogonalToVelocity.y,
-                                  orthogonalToInclinationPlane.z * orthogonalToVelocity.x - orthogonalToInclinationPlane.x * orthogonalToVelocity.z,
-                                  orthogonalToInclinationPlane.x * orthogonalToVelocity.y - orthogonalToInclinationPlane.y * orthogonalToVelocity.x);
-
-
-
-        //NUn muss ein Vektor konstruiert werden, der orthogonal zu dem vektor ellipseCenter - startingPoint liegt. Zudem muss der Vektor in der Ebene des Orbits liegen d.h.
-        //auch orthogonal zu dem Normalenvektor der Ebene sein.
-        //ctor3 centerToStartingPoint = startingPoint - ellipseCenter;
-        //der andere Vektor der die Ebene aufspannt ist orthogonalToInclinationPlane
-        //locityDir = new Vector3(orthogonalToInclinationPlane.y * centerToStartingPoint.z - orthogonalToInclinationPlane.z * centerToStartingPoint.y,
-        //                                orthogonalToInclinationPlane.z * centerToStartingPoint.x - orthogonalToInclinationPlane.x * centerToStartingPoint.z,
-        //                                orthogonalToInclinationPlane.x * centerToStartingPoint.y - orthogonalToInclinationPlane.y * centerToStartingPoint.x);
-
+        //Jetzt muss nur noch die Richtung und Stärke der initialen geschwindigkeit berechnet werden.
+        //Die Richtung der Bewegung ist eine Tangente der Ellipse.
+        //dazu berechnen wir erst zwei Vektoren: vec1 ist die relative Position der Startposition zum Brennpunkt1 (also dem Ursprung) und vec2 ist die relative Position der Startposition zum Brennpunkt 2.
+        //Die Orthogonale der Winkelhalbierenden zwischen diesen beiden Vectoren ist der Richtungsvector der Tangente der Ellipse und damit die Richtung der initialen Bewegung.
+        Vector3 vec1 = startingPoint;
+        Vector3 vec2 = startingPoint - focus2;
+        float angle = Vector3.Angle(vec1, vec2);
+        Vector3 mitteldiagonale = Vector3.RotateTowards(vec1, vec2, angle / 2 / 360 * 2 * Mathf.PI, 1f);
+        Vector3 velDir = Quaternion.AngleAxis(90, orthogonalToPlane) * mitteldiagonale;
 
         this.transform.position = startingPoint;
 
-        error = periapsis.magnitude - startingPoint.magnitude;
-
+        //Im letzten schritt wird nur noch die Sträke der Anfangsgeschwindigkeit bestimmt.
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.mass = GetComponent<Attractor>().mass;
-        /*float apoapsisSpeed = Mathf.Sqrt(AttractionManager.SPEED * bezugssystem.getMassSim() * ((2 / apoapsisHeightSim) - (1 / semiMajorAxisSim)));
-        float periapsisSpeed = Mathf.Sqrt(AttractionManager.SPEED * bezugssystem.getMassSim() * ((2 / periapsisHeightSim) - (1 / semiMajorAxisSim)));
-        //Wegen error im Debug.Log
-        if (!float.IsNaN(periapsisSpeed))
-        {
-            //Richtung des Vektors anpassen um den Orbit im Uhrzeigersinn zu forcieren.
-            //Wenn der Planet auf der linken Seite der Sonne startet, dann muss er sich nach "oben" wegbewegen.
-            //Andererseits, wenn der Planet links startet muss er sich nach unten bewegen.
-            if (this.transform.position.x < 0)
-            {
-                rb.velocity = new Vector3(-periapsis.z / periapsis.x, 0, 1).normalized * periapsisSpeed;
-            } else
-            {
-                rb.velocity = new Vector3(periapsis.z / periapsis.x, 0, -1).normalized * periapsisSpeed;
-            }
-        }*/
-
-
-        //NEW
         startSpeed = Mathf.Sqrt(((float)AttractionManager.SPEED * (bezugssystem.getMassSim() + GetComponent<Attractor>().mass)) * ((2 / startingPoint.magnitude) - (1 / semiMajorAxisSim)));
-        //Wegen error im Debug.Log
         if (!float.IsNaN(startSpeed))
         {
-            rb.velocity = velocityDir.normalized * startSpeed;
+            rb.velocity = -velDir.normalized * startSpeed;
         }
 
-    }
-
-    public void Start()
-    {
-        
     }
 
     public float getMassSim()
