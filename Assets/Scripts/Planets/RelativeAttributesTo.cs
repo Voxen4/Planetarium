@@ -112,28 +112,31 @@ public class RelativeAttributesTo : MonoBehaviour
         Tagecounter += tickDays;
 
     }
+
+    private Vector3 lastRelativePosition;
+    private Vector3 currentRelativePosition;
     void PrintValues()
     {
-
-        if ((Tagecounter > (1 - (tickDays / 2))) && Tagecounter < (1 + (tickDays / 2)))
+        currentRelativePosition = this.gameObject.transform.position;
+        if (Tagecounter > 1)
         {
             if(this.gameObject.name == "earth")
             {
                 manager.tageCounter++;
             }
             Tagecounter -= 1;
+            Vector3 movementDist = lastRelativePosition - currentRelativePosition;
+            Vector3 interpolatedPosition = currentRelativePosition + movementDist * (Tagecounter / tickDays);
+            interpolatedPosition *= PlanetData.distanceUmrechnung / PlanetData.AE;
             if (FileWriter == null)
             {
                 FileWriter = File.AppendText(fileName);
             }
-            string s = this.gameObject.name + "\t" + RelativePos.ToString("F8") + "\t" + RelativePos.x.ToString() + "\t" + RelativePos.y.ToString() + "\t" + RelativePos.z.ToString()
-                + "\t" + RelativeVel.ToString() + "\t" + ApoapsisHeight.ToString()
-                + "\t" + PeriapsisHeight.ToString() + "\t" + CurrentDistance.ToString() + "\t" + StartTheta.ToString() + "	" + StartPhi.ToString() + "	" + currentTheta
-                + "\t" + currentPhi.ToString() + "\t" + maxDistanceAngleTheta.ToString() + "\t" + maxDistanceAnglePhi.ToString() + "\t" + minDistanceAngleTheta.ToString()
-                + "\t" + minDistanceAnglePhi.ToString() + "\t" + period.ToString() + "\t" + spin.ToString() + "\t" + lastPos.ToString() + "\t" + lastPhi.ToString() + "\t" + periodSum.ToString();
+            string s = interpolatedPosition.x.ToString() + "\t" + interpolatedPosition.y.ToString() + "\t" + interpolatedPosition.z.ToString();
             FileWriter.WriteLine(s);
             //return s;
         }
+        lastRelativePosition = currentRelativePosition;
 
     }
 
