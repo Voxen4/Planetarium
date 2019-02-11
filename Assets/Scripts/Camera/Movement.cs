@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
    
-    public float movementSpeed = 0.2f;
+    public static float movementSpeed = 1f;
 
     public float lookAroundSensitivity = 3f;
     
