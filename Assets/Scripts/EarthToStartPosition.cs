@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
+﻿using System.Globalization;
 using UnityEngine;
 
-
+/// <summary>
+/// Klasse um die Startposition der einzelnen Planeten pro Jahr zu laden und zu erstellen
+/// </summary>
 public class EarthToStartPosition : MonoBehaviour {
 
     public GameObject earth;
@@ -28,8 +26,5 @@ public class EarthToStartPosition : MonoBehaviour {
         earth.transform.position = new Vector3(xInAu,yInAu,zInAu);
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+  
 }

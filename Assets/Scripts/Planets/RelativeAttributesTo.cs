@@ -1,10 +1,15 @@
 ﻿using System.IO;
 using UnityEngine;
 
+
+/// <summary>
+/// Log Funktion, der einzelnen Planeten
+/// </summary>
 public class RelativeAttributesTo : MonoBehaviour
 {
     public UIManager manager;
     private float tagecounter = 0;
+    //Mittelwert der Geschwindigkeit der Simulation, Wert wird benötigt um einen Tag zu berechnen und loggen zu können
     private float tickDays = 0.183272672F;
 
     public PlanetData relativeTo;

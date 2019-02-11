@@ -6,6 +6,9 @@ using System.Runtime.CompilerServices;
 
 namespace UnityEngine
 {
+    /// <summary>
+    /// Verschiedene Mathematische Funktionen die implementiert worden sind, die uns helfen Berechnungen durchzuführen, keine einzelne Erklärung zu jedem einzelnen
+    /// </summary>
     public struct Mathd
     {
         public const double PI = 3.141593d;
