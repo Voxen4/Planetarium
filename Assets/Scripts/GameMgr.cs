@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+/// <summary>
+/// Singelton zum Verwalten des Programs, hier werden die Szenen gewechselt und das Datum gespeichert.
+/// </summary>
 public class GameMgr : PersistentGameObjectSingleton<GameMgr>
 {
     private string nextScene;
@@ -25,6 +28,7 @@ public class GameMgr : PersistentGameObjectSingleton<GameMgr>
         return date;
     }
 
+    //TogglePauseMenu loads the nextScene
     public void TogglePauseMenu()
     {
          // not the optimal way but for the sake of readability
@@ -56,7 +60,7 @@ public class GameMgr : PersistentGameObjectSingleton<GameMgr>
         }
     }
     
-    // Update is called once per frame
+    // Update stops the Simulation when switching to the Menu Scene
     void Update () {
         //Check each frame if MenuScene is loaded to switch to it
         if (SceneManager.GetSceneByName(nextScene).isLoaded && SceneManager.GetActiveScene().name != nextScene)

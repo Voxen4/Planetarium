@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Generic Class Implementing a Generic Singelton
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class PersistentGameObjectSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     public static PersistentGameObjectSingleton<T> Instance { get; private set; }

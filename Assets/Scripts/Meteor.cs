@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Klasse zum erstellen von Asteroiden
+/// </summary>
 public class Meteor : MonoBehaviour
 {
 
@@ -14,7 +16,9 @@ public class Meteor : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update wartet auf das drücken der Leertaste daraufhin wir ein Asteroid zu erzeugt, der Vektor zwischen der Kamera und dem Mauszeiger bildet die Richtung des Asteroiden.
+    /// </summary>
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

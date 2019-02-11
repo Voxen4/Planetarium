@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Utility Klasse die auf Drücken des Start Buttons/ Stop Buttons Wartet und dann entsprechend die Simulation startet oder das Program beendet
+/// </summary>
 public class StartExitButtonHandler : MonoBehaviour
 {
     

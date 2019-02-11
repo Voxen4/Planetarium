@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEditor;
-
+/// <summary>
+/// Klasse Zum Verarbeiten von Tasteneingaben in beiden Szenen und Anzeige des Datums und der Planet Informationen in der Hautpszene
+/// </summary>
 public class UIManager : MonoBehaviour
 {
     public GameObject trackedPlanet;
@@ -12,6 +14,9 @@ public class UIManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Update Methode, wartet auf drücken der ESC Taste und führt dann einen Szenen Wechsel aus.
+    /// </summary>
     void Update()
     {
         if (Input.GetKeyDown("escape"))
@@ -20,6 +25,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// OnGUI Methode aktualisiert bei ausgewähltem Planeten die Positions und Velocity Informationen,
+    /// bei abwählen eines Planeten löscht es die Informationen. Aktualisiert außerdem das Datum in der GUI.
+    /// </summary>
     void OnGUI()
     {
         var customDate = ((GameMgr)GameMgr.Instance).getDate();

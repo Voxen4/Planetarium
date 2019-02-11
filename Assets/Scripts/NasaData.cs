@@ -1,13 +1,18 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Wrapper Klasse zum Parsen von Nasa Daten und bereitstellen von Funktionen um diese Abhängig vom Datum abzurufen.
+/// </summary>
 public class NasaData : MonoBehaviour
 {
     public Planet planet;
     public TextAsset asset;
     private Dictionary<short, Parsed> parsedPositions = new Dictionary<short, Parsed>();
     // Use this for initialization
-
+    /// <summary>
+    /// Beim starten des Scripts werden die Daten des Text Assets geparst.
+    /// </summary>
     private void Awake()
     {
         string content = asset.text;
