@@ -1,3 +1,13 @@
+# Simulation des Sonnensystems
+Programm für das Fach SE-Projekt von Herr Pekrun
+
+Dokumentation im Hauptverzeichnis: Dokumentation_Simulation_Sonnensystem.docx
+Präsentation im Hauptverzeichnis: Präsentation_Simulation_Sonnensystem.pptx
+
+Geschrieben in C# mit Unity mit Verwendung von freien Assets
+
+
+
 Projekt der TU Graz (für Kräfte etc)
 https://itp.tugraz.at/wiki/index.php/Simulation_unseres_Sonnensystems
 
